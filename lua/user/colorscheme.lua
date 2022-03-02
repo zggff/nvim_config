@@ -9,14 +9,14 @@
 
 -- gc
 
-local dn = require('dark_notify')
+local dn = require("dark_notify")
 
 dn.run({
-    schemes = {
-      dark  = "ayu-mirage",
-    light = "ayu-light"
-    },
-    })
+	schemes = {
+		dark = "ayu-mirage",
+		light = "ayu-light",
+	},
+})
 
 dn.update()
- -- 
+--

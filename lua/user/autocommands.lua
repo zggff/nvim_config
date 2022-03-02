@@ -28,6 +28,12 @@ vim.cmd [[
     autocmd!
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
+
+  augroup _haskell 
+    autocmd!
+    autocmd FileType haskell set shiftwidth=2 
+    autocmd FileType haskell set tabstop=2  
+  augroup end
 ]]
 
 -- Autoformat
