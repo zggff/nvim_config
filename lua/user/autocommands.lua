@@ -1,4 +1,4 @@
-vim.cmd [[
+vim.cmd([[
   augroup _general_settings
     autocmd!
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
@@ -31,13 +31,12 @@ vim.cmd [[
 
   augroup _haskell 
     autocmd!
-    autocmd FileType haskell set shiftwidth=2 
-    autocmd FileType haskell set tabstop=2  
-  augroup end
-]]
+     autocmd FileType haskell set shiftwidth=2 
+     autocmd FileType haskell set tabstop=2  
+   augroup end
 
--- Autoformat
--- augroup _lsp
---   autocmd!
---   autocmd BufWritePre * lua vim.lsp.buf.formatting()
--- augroup end
+ augroup _lsp
+   autocmd!
+   autocmd BufWritePre * lua vim.lsp.buf.formatting()
+ augroup end
+]])

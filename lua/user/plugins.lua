@@ -61,8 +61,15 @@ return packer.startup(function(use)
 	use("tpope/vim-fugitive")
 	use("folke/trouble.nvim")
 	use("folke/todo-comments.nvim")
-    use("kg8m/vim-simple-align")
-    use("antoyo/vim-licenses")
+	use("kg8m/vim-simple-align")
+	use("antoyo/vim-licenses")
+	use("christoomey/vim-tmux-navigator")
+	use("mfussenegger/nvim-dap")
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	use({
+		"theHamsta/nvim-dap-virtual-text",
+		requires = { "nvim-treesitter/nvim-treesitter", "mfussenegger/nvim-dap" },
+	})
 	-- Colorschemes
 
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out

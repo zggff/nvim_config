@@ -95,7 +95,7 @@ local mappings = {
 	},
 	["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
 	["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-    ["r"] = { "<cmd>TroubleToggle<cr>", "Toggle trouble"},
+	["r"] = { "<cmd>TroubleToggle<cr>", "Toggle trouble" },
 	p = {
 		name = "Packer",
 		c = { "<cmd>PackerCompile<cr>", "Compile" },
@@ -158,8 +158,8 @@ local mappings = {
 			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
 			"Workspace Symbols",
 		},
-        -- t = {"<cmd>TroubleToggle workspace_diagnostics<cr>", "Toggle workspace diagnostics"},
-        -- T = {"<cmd>TroubleToggle document_diagnostics<cr>", "Toggle document diagnostics"}
+		-- t = {"<cmd>TroubleToggle workspace_diagnostics<cr>", "Toggle workspace diagnostics"},
+		-- T = {"<cmd>TroubleToggle document_diagnostics<cr>", "Toggle document diagnostics"}
 	},
 	s = {
 		name = "Search",
@@ -182,6 +182,43 @@ local mappings = {
 		f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
 		h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
 		v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+	},
+
+	k = {
+		name = "Debugger",
+		b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle breakpoint" },
+		B = {
+			"<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",
+			"Toggle breakpoint with condition",
+		},
+		c = {
+			"<cmd>lua require'dap'.continue()<cr>",
+			"Start debugging",
+		},
+		C = {
+			"<cmd>lua require'dap'.run_last()<cr>",
+			"Restart debugging",
+		},
+		n = {
+			"<cmd>lua require'dap'.step_over()<cr>",
+			"Step over",
+		},
+		s = {
+			"<cmd>lua require'dap'.step_into()<cr>",
+			"Step into",
+		},
+		S = {
+			"<cmd>lua require'dap'.step_out()<cr>",
+			"Step out",
+		},
+		t = {
+			"<cmd>lua require'dap'.repl.toggle()<cr>",
+			"Toggle dap repl",
+		},
+		T = {
+			"<cmd>lua require'dapui'.toggle()<cr>",
+			"Toggle dapui",
+		},
 	},
 }
 
