@@ -87,6 +87,34 @@ telescope.setup({
 		-- builtin picker
 	},
 	extensions = {
+		["ui-select"] = {
+			require("telescope.themes").get_dropdown({
+				-- even more opts
+			}),
+		},
+		lsp_handlers = {
+			lsp_handlers = {
+				disable = {},
+				location = {
+					telescope = {},
+					no_results_message = "No references found",
+				},
+				symbol = {
+					telescope = {},
+					no_results_message = "No symbols found",
+				},
+				call_hierarchy = {
+					telescope = {},
+					no_results_message = "No calls found",
+				},
+				code_action = {
+					-- telescope = {},
+					telescope = require("telescope.themes").get_dropdown({}),
+					no_results_message = "No code actions available",
+					prefix = "",
+				},
+			},
+		},
 		-- Your extension configuration goes here:
 		-- extension_name = {
 		--   extension_config_key = value,
@@ -94,3 +122,6 @@ telescope.setup({
 		-- please take a look at the readme of the extension you want to configure
 	},
 })
+
+-- telescope.load_extension("lsp_handlers")
+telescope.load_extension("ui-select")

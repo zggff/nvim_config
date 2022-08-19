@@ -1,6 +1,6 @@
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
+-- local term_opts = { silent = true }
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
@@ -10,13 +10,8 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
+
+
 
 -- Normal --
 -- Better window navigation
@@ -36,12 +31,13 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+keymap("n", "<A-j>", "<Esc>:m .+1<CR>", opts)
+keymap("n", "<A-k>", "<Esc>:m .-2<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)
+-- keymap("i", "tt", "<Tab>", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -66,4 +62,3 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-

@@ -181,6 +181,10 @@ end
 local extended_schemas = extend(schemas, default_schemas)
 
 local opts = {
+	-- resolved_capabilities = {
+	-- 	document_formatting = false,
+	-- 	document_range_formatting = false,
+	-- },
 	settings = {
 		json = {
 			schemas = extended_schemas,
