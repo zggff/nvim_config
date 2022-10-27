@@ -36,8 +36,10 @@ vim.cmd([[
      autocmd FileType haskell set tabstop=2  
    augroup end
 
+  au BufNewFile,BufRead *.wgsl set filetype=wgsl
+
  augroup _lsp
    autocmd!
-     autocmd BufWritePre * lua vim.lsp.buf.formatting_seq_sync()
+     autocmd BufWritePre * lua vim.lsp.buf.format()
  augroup end
 ]])

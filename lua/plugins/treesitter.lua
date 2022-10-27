@@ -2,7 +2,17 @@ local status_ok, configs = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
     return
 end
--- require("orgmode").setup_ts_grammar()
+
+
+-- local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+-- parser_config.wgsl = {
+--     install_info = {
+--         url = "https://github.com/szebniok/tree-sitter-wgsl",
+--         files = { "src/parser.c" }
+--     },
+-- }
+
+
 
 configs.setup({
     ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages

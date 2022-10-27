@@ -10,8 +10,8 @@ end
 local diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
-    sections = { "error", "warn" },
-    symbols = { error = " ", warn = " " },
+    sections = { "error", "warn", "hint" },
+    symbols = { error = " ", warn = " ", hint = " " },
     colored = false,
     update_in_insert = false,
     always_visible = true,
@@ -45,7 +45,7 @@ lualine.setup({
     },
     sections = {
         lualine_a = {
-            { "mode", separator = { left = " " }, right_padding = 2 },
+            { "mode", separator = { left = " " }, right_padding = 2 },
             diagnostics,
         },
         lualine_b = { "filename", branch },
@@ -53,7 +53,7 @@ lualine.setup({
         lualine_x = { { "diff", colored = false } },
         lualine_y = { { "filetype", icons_enabled = false, icon = nil }, { "progress", right_padding = 3 } },
         lualine_z = {
-            { "location", separator = { right = " " }, left_padding = 4 },
+            { "location", separator = { right = " " }, left_padding = 4 },
         },
     },
     inactive_sections = {

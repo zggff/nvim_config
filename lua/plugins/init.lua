@@ -1,27 +1,21 @@
 local fn = vim.fn
 
 -- Automatically install packer
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-    PACKER_BOOTSTRAP = fn.system({
-        "git",
-        "clone",
-        "--depth",
-        "1",
-        "https://github.com/wbthomason/packer.nvim",
-        install_path,
-    })
-    print("Installing packer close and reopen Neovim...")
-    vim.cmd([[packadd packer.nvim]])
-end
+-- local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+-- if fn.empty(fn.glob(install_path)) > 0 then
+--   PACKER_BOOTSTRAP = fn.system({
+--     "git",
+--   "clone",
+--    "--depth",
+--    "1",
+--    "https://github.com/wbthomason/packer.nvim",
+--        install_path,
+--   })
+--   print("Installing packer close and reopen Neovim...")
+--  vim.cmd([[packadd packer.nvim]])
+--end
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
+vim.cmd [[packadd packer.nvim]]
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
@@ -40,7 +34,6 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
-    -- My plugins here
     use("wbthomason/packer.nvim") -- bootstrap the packer
     use("nvim-lua/popup.nvim") -- popup api
     use("nvim-lua/plenary.nvim") -- useful lua functions used by lots of plugins
@@ -127,7 +120,8 @@ return packer.startup(function(use)
     use({
         "folke/todo-comments.nvim",
         config = function()
-            require("todo-comments")
+            require("todo-comments").setup()
+            -- require("todo-comments")
         end,
     })
     use("kg8m/vim-simple-align")
@@ -160,17 +154,20 @@ return packer.startup(function(use)
     })
     use({
         "nvim-neorg/neorg",
-        requires = "nvim-lua/plenary.nvim",
+        -- run = ":Neorg sync-parsers",
+        -- after = "nvim-treesitter",
+
         config = function()
-            require("neorg")
+            require("plugins.neorg")
         end,
+        requires = "nvim-lua/plenary.nvim"
     })
     -- Colorschemes
 
-    -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+    use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
     -- use("lunarvim/darkplus.nvim")
     use("folke/lsp-colors.nvim")
-    -- use("Shatur/neovim-ayu")
+    use("Shatur/neovim-ayu")
     use({
         "cormacrelf/dark-notify",
         config = function()
@@ -181,7 +178,7 @@ return packer.startup(function(use)
         config = function()
             -- require("plugins.onedarkpro")
         end })
-    -- use("projekt0n/github-nvim-theme")
+    use("projekt0n/github-nvim-theme")
     --  NOTE
     -- cmp plugins
     use({
@@ -237,6 +234,14 @@ return packer.startup(function(use)
             require("plugins.treesitter")
         end,
     })
+    use({ "NoahTheDuke/vim-just" })
+    -- use({
+    --     "IndianBoy42/tree-sitter-just",
+    --     requires = "nvim-treesitter/nvim-treesitter",
+    --     config = function()
+    --         require('tree-sitter-just').setup()
+    --     end
+    -- })
 
     use("JoosepAlviste/nvim-ts-context-commentstring")
 

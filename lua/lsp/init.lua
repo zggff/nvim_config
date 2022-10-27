@@ -15,6 +15,19 @@ mason_lspconfig.setup_handlers({
             capabilities = handlers.capabilities,
         }
     end,
+
+    ["als"] = function()
+        local opts = {
+            on_attach = handlers.on_attach,
+            capabilities = handlers.capabilities,
+            settings = {
+                ada = {
+                }
+            }
+        }
+        lspconfig["als"].setup(opts)
+
+    end,
     ["sumneko_lua"] = function()
         local opts = {
             on_attach = handlers.on_attach,
