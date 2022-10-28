@@ -1,7 +1,4 @@
-local status_ok, alpha = pcall(require, "alpha")
-if not status_ok then
-    return
-end
+local alpha = require("alpha")
 
 local dashboard = require("alpha.themes.dashboard")
 dashboard.section.header.val = {
@@ -22,11 +19,8 @@ dashboard.section.buttons.val = {
     dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
 }
 
-local function footer()
-    return "zggff<gigamaximwachau@gmail.com>"
-end
+dashboard.section.footer.val = "zggff<gigamaximwachau@gmail.com>"
 
-dashboard.section.footer.val = footer()
 
 dashboard.section.footer.opts.hl = "Type"
 dashboard.section.header.opts.hl = "Include"

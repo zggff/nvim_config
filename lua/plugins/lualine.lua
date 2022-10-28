@@ -1,30 +1,26 @@
-local status_ok, lualine = pcall(require, "lualine")
-if not status_ok then
-    return
-end
-
-local hide_in_width = function()
-    return vim.fn.winwidth(0) > 80
-end
-
 local diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
     sections = { "error", "warn", "hint" },
     symbols = { error = " ", warn = " ", hint = " " },
-    colored = false,
+    colored = true,
     update_in_insert = false,
-    always_visible = true,
+    always_visible = false,
 }
 
 
 local branch = {
     "branch",
-    icons_enabled = true,
-    icon = "",
+    separator = {},
+    icon = " ",
 }
 
-lualine.setup({
+local filetype = {
+    "filetype",
+    icons_enabled = false
+}
+
+require("lualine").setup({
     options = {
         theme = "auto",
         component_separators = "|",
@@ -44,17 +40,12 @@ lualine.setup({
         },
     },
     sections = {
-        lualine_a = {
-            { "mode", separator = { left = " " }, right_padding = 2 },
-            diagnostics,
-        },
-        lualine_b = { "filename", branch },
-        lualine_c = {},
-        lualine_x = { { "diff", colored = false } },
-        lualine_y = { { "filetype", icons_enabled = false, icon = nil }, { "progress", right_padding = 3 } },
-        lualine_z = {
-            { "location", separator = { right = " " }, left_padding = 4 },
-        },
+        lualine_a = { "mode" },
+        lualine_b = { branch, "diff" },
+        lualine_c = { diagnostics },
+        lualine_x = { "filename" },
+        lualine_y = { filetype, "progress" },
+        lualine_z = { "location" },
     },
     inactive_sections = {
         lualine_a = { "filename" },
@@ -64,6 +55,4 @@ lualine.setup({
         lualine_y = {},
         lualine_z = { "location" },
     },
-    tabline = {},
-    extensions = {},
 })
