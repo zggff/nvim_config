@@ -15,14 +15,15 @@ M.setup = function()
 
     local config = {
         -- disable virtual text
-        virtual_text = false, -- fewaf ew
+        virtual_text = true, -- fewaf ew
         -- show signs
-        signs = {
-            active = signs,
-        },
-        update_in_insert = true,
-        underline = true,
-        severity_sort = true,
+        signs = false;
+        -- signs = {
+        --     active = signs,
+        -- },
+        update_in_insert = false,
+        underline = false,
+        severity_sort = false, -- disable severity sort for rust to put type hints first
         float = {
             focusable = false,
             style = "minimal",
@@ -82,7 +83,7 @@ local function lsp_keymaps(bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
     -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
     vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
-    vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })]])
+    -- vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })]])
 end
 
 M.on_attach = function(client, bufnr)

@@ -217,6 +217,12 @@ return packer.startup(function(use)
             require("plugins.treesitter")
         end,
     })
+    use({ 'lervag/vimtex',
+        config = function()
+            require("plugins.latex")
+        end,
+    })
+    --
     use({ "NoahTheDuke/vim-just" })
     -- use({
     --     "IndianBoy42/tree-sitter-just",

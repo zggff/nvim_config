@@ -1,9 +1,4 @@
-local onedarkpro_status_ok, onedarkpro = pcall(require, "onedarkpro")
-if not onedarkpro_status_ok then
-    return
-end
-
-onedarkpro.setup({
+require("onedarkpro").setup({
     theme = function()
         if vim.o.background == "dark" then
             return "onedark"
@@ -11,7 +6,6 @@ onedarkpro.setup({
             return "onelight"
         end
     end,
-
     options = {
         bold = true, -- Use the themes opinionated bold styles?
         italic = true, -- Use the themes opinionated italic styles?
@@ -23,7 +17,24 @@ onedarkpro.setup({
         window_unfocused_color = true, -- When the window is out of focus, change the normal background?
     },
 })
+require('ayu').setup({
+    mirage = true
+})
 
 
 
-onedarkpro.load()
+-- use dark_notify to switch between thems
+local dn = require("dark_notify")
+dn.configure({
+    schemes = {
+        dark = "ayu-mirage",
+        light = "ayu-light"
+    }
+})
+dn.update()
+dn.run()
+
+-- require("ayu").colorscheme()
+-- vim.cmd([[colorscheme ayu]])
+-- vim.g.colors_name = "ayu"
+-- vim.g.colors = "ayu"
