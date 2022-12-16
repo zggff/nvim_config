@@ -6,9 +6,10 @@ neorg.setup {
         ["core.norg.concealer"] = {
         },
         ["core.norg.completion"] = {
-            config = {
+            config = { -- Note that this table is optional and doesn't need to be provided
                 engine = "nvim-cmp"
+                -- Configuration here
             }
-        },
+        }
     }
 }

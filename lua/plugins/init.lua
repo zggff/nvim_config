@@ -1,4 +1,17 @@
-vim.cmd [[packadd packer.nvim]]
+local ensure_packer = function()
+    local fn = vim.fn
+    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+        vim.cmd [[packadd packer.nvim]]
+        return true
+    end
+    return false
+end
+
+local packer_bootstrap = ensure_packer()
+
+-- vim.cmd [[packadd packer.nvim]]
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
@@ -26,8 +39,11 @@ return packer.startup(function(use)
             require("plugins.autopairs")
         end,
     }) -- autopairs, integrates with both cmp and treesitter
+    use("JoosepAlviste/nvim-ts-context-commentstring")
+
     use({
         "numToStr/Comment.nvim",
+        requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
         config = function()
             require("plugins.comment")
         end,
@@ -107,7 +123,7 @@ return packer.startup(function(use)
             -- require("todo-comments")
         end,
     })
-    use("kg8m/vim-simple-align")
+    -- use("kg8m/vim-simple-align")
     --[[ use("antoyo/vim-licenses") ]]
     use({
         "christoomey/vim-tmux-navigator",
@@ -137,62 +153,72 @@ return packer.startup(function(use)
     })
     use({
         "nvim-neorg/neorg",
-        -- run = ":Neorg sync-parsers",
-        -- after = "nvim-treesitter",
-
         config = function()
             require("plugins.neorg")
         end,
         requires = "nvim-lua/plenary.nvim"
     })
+
     -- Colorschemes
 
     use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
     -- use("lunarvim/darkplus.nvim")
     use("folke/lsp-colors.nvim")
     use("Shatur/neovim-ayu")
+    use({ "karb94/neoscroll.nvim", config = function()
+        require("neoscroll").setup()
+    end })
     use({
         "cormacrelf/dark-notify",
-        config = function()
-            require("dark_notify").run({})
-        end
+        -- config = function()
+        -- require("dark_notify").run({})
+        -- end
     })
     use({ "olimorris/onedarkpro.nvim",
         config = function()
             -- require("plugins.onedarkpro")
         end })
+    use({ "ellisonleao/gruvbox.nvim" })
     use("projekt0n/github-nvim-theme")
     --  NOTE
     -- cmp plugins
+    use({ "onsails/lspkind.nvim" })
     use({
         "hrsh7th/nvim-cmp",
-        requires = "L3MON4D3/LuaSnip",
+        requires = { "L3MON4D3/LuaSnip", "onsails/lspkind.nvim" },
         config = function()
             require("plugins.cmp")
         end,
-    }) -- The completion plugin
+    })
     use("hrsh7th/cmp-buffer") -- buffer completions
     use("hrsh7th/cmp-path") -- path completions
     use("hrsh7th/cmp-cmdline") -- cmdline completions
     use("saadparwaiz1/cmp_luasnip") -- snippet completions
     use("hrsh7th/cmp-nvim-lsp")
-    -- snippets
     use("L3MON4D3/LuaSnip") --snippet engine
     use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
     -- LSP
     use("neovim/nvim-lspconfig") -- enable LSP
+    use({
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+        config = function()
+            require("lsp.saga")
+        end
+    })
     use { "williamboman/mason-lspconfig.nvim", }
     use { "williamboman/mason.nvim",
         requires = {
             "neovim/nvim-lspconfig",
             "williamboman/mason-lspconfig.nvim"
         },
-        config = function() require("lsp") end }
+    }
 
     use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
     use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
     use("simrat39/rust-tools.nvim") -- improve lsp experience for rust
+
     -- Telescope
     use({
         "nvim-telescope/telescope.nvim",
@@ -217,22 +243,11 @@ return packer.startup(function(use)
             require("plugins.treesitter")
         end,
     })
-    use({ 'lervag/vimtex',
-        config = function()
-            require("plugins.latex")
-        end,
+    use({
+        "nvim-treesitter/playground",
+        requires = "nvim-treesitter/nvim-treesitter"
     })
-    --
     use({ "NoahTheDuke/vim-just" })
-    -- use({
-    --     "IndianBoy42/tree-sitter-just",
-    --     requires = "nvim-treesitter/nvim-treesitter",
-    --     config = function()
-    --         require('tree-sitter-just').setup()
-    --     end
-    -- })
-
-    use("JoosepAlviste/nvim-ts-context-commentstring")
 
     -- Git
     use({
@@ -241,10 +256,26 @@ return packer.startup(function(use)
             require("plugins.gitsigns")
         end,
     })
+    use({
+        "mrjones2014/legendary.nvim",
+        config = function()
+            require("plugins.legendary")
+        end,
+    })
+
+    use({
+        "ggandor/leap.nvim",
+        config = function()
+            require("leap").add_default_mappings()
+        end
+    })
+    use({
+        "imsnif/kdl.vim"
+    })
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
-    if PACKER_BOOTSTRAP then
-        require("packer").sync()
+    if packer_bootstrap then
+        require('packer').sync()
     end
 end)

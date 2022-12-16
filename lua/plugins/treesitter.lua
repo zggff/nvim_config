@@ -26,9 +26,15 @@ configs.setup({
         disable = { "" }, -- list of language that will be disabled
         additional_vim_regex_highlighting = true,
     },
-    indent = { enable = true, disable = { "yaml" } },
+    indent = { enable = true, disable = { "yaml", "html" } },
     context_commentstring = {
         enable = true,
         enable_autocmd = false,
     },
+    playground = {
+        enable = true,
+        disable = {},
+        updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+        persist_queries = false
+    }
 })
