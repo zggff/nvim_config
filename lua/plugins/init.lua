@@ -98,7 +98,6 @@ require("lazy").setup(
                 require("plugins.whichkey")
             end,
         },
-        { "tpope/vim-fugitive" },
         {
             "folke/trouble.nvim",
             config = function()
@@ -112,8 +111,6 @@ require("lazy").setup(
                 -- require("todo-comments")
             end,
         },
-        -- -- use("kg8m/vim-simple-align")
-        -- --[[ use("antoyo/vim-licenses") ]]
         {
             "christoomey/vim-tmux-navigator",
             config = function()
@@ -140,13 +137,13 @@ require("lazy").setup(
                 require("plugins.dap-virtual-text")
             end,
         },
-        --use({
-        --  "nvim-neorg/neorg",
-        --config = function()
-        --  require("plugins.neorg")
-        -- end,
-        --    requires = "nvim-lua/plenary.nvim"
-        --}),
+        {
+            "nvim-neorg/neorg",
+            config = function()
+                require("plugins.neorg")
+            end,
+            dependencies = { "nvim-lua/plenary.nvim" }
+        },
 
         -- Colorschemes
 
@@ -241,6 +238,12 @@ require("lazy").setup(
             "lewis6991/gitsigns.nvim",
             config = function()
                 require("plugins.gitsigns")
+            end,
+        },
+        {
+            'TimUntersberger/neogit', dependencies = { 'nvim-lua/plenary.nvim' },
+            config = function()
+                require("plugins.neogit")
             end,
         },
         {

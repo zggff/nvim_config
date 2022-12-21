@@ -132,13 +132,13 @@ mason_lspconfig.setup_handlers({
         lspconfig["sumneko_lua"].setup({
             on_attach = on_attach,
             capabilities = capabilities,
-            settings = {
-                Lua = {
-                    completion = {
-                        callSnippet = "Replace"
-                    }
-                }
-            }
+            -- settings = {
+            --     Lua = {
+            --         completion = {
+            --             callSnippet = "Replace"
+            --         }
+            --     }
+            -- }
         })
         -- opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
         -- lspconfig["sumneko_lua"].setup(opts)
