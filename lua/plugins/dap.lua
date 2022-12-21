@@ -5,7 +5,7 @@ end
 
 dap.adapters.lldb = {
     type = "executable",
-    command = "/opt/homebrew/Cellar/llvm/15.0.5/bin/lldb-vscode", -- adjust as needed
+    command = "/opt/homebrew/Cellar/llvm/15.0.6/bin/lldb-vscode", -- adjust as needed
     name = "lldb",
 }
 
