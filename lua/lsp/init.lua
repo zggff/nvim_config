@@ -124,13 +124,24 @@ mason_lspconfig.setup_handlers({
         }
     end,
     ["sumneko_lua"] = function()
-        local opts = {
+        -- local opts = {
+        --     on_attach = on_attach,
+        --     capabilities = capabilities,
+        -- }
+        -- local sumneko_opts = require("lsp.settings.sumneko_lua")
+        lspconfig["sumneko_lua"].setup({
             on_attach = on_attach,
             capabilities = capabilities,
-        }
-        local sumneko_opts = require("lsp.settings.sumneko_lua")
-        opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
-        lspconfig["sumneko_lua"].setup(opts)
+            settings = {
+                Lua = {
+                    completion = {
+                        callSnippet = "Replace"
+                    }
+                }
+            }
+        })
+        -- opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+        -- lspconfig["sumneko_lua"].setup(opts)
     end,
     ["rust_analyzer"] = function()
 
