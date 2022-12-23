@@ -20,3 +20,4 @@ dn.run({
         light = "onelight"
     }
 })
+dn.update()
