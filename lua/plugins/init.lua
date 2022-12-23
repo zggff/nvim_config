@@ -17,11 +17,10 @@ require("lazy").setup(
         {
             "folke/neodev.nvim",
             config = function()
-                require("neodev").setup({
-                })
+                require("neodev").setup()
 
             end
-        },
+        }, -- neovim config autocompletion
         { "nvim-lua/popup.nvim" }, -- popup api
         { "nvim-lua/plenary.nvim" }, -- useful lua functions used by lots of plugins
         {
@@ -44,28 +43,29 @@ require("lazy").setup(
             config = function()
                 require("plugins.nvim-tree")
             end,
-        },
+        }, -- file manager
         {
             "akinsho/bufferline.nvim",
             dependencies = { "kyazdani42/nvim-web-devicons" },
             config = function()
                 require("plugins.bufferline")
             end,
-        },
+        }, -- top buffer line
+        { "moll/vim-bbye" }, -- api for closing buffers
+
         {
             "akinsho/toggleterm.nvim",
             version = "*",
             config = function()
                 require("plugins.toggleterm")
             end
-        },
-        { "moll/vim-bbye" },
+        }, -- terminal
         {
             "nvim-lualine/lualine.nvim",
             config = function()
                 require("plugins.lualine")
             end,
-        },
+        }, -- bottom line
 
         {
             "ahmedkhalf/project.nvim",
@@ -232,6 +232,7 @@ require("lazy").setup(
             requires = "nvim-treesitter/nvim-treesitter"
         },
         { "NoahTheDuke/vim-just" },
+        { "davidgranstrom/nvim-markdown-preview" },
 
         -- Git
         {
