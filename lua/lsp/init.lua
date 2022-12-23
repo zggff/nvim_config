@@ -92,10 +92,6 @@ function set_rust_target(target)
                 ["rust-analyzer"] = {
                     checkOnSave = {
                         command = "clippy"
-                        --     allFeatures = true,
-                        --     overrideCommand = {
-                        --         'cargo', 'clippy', '--workspace', '--message-format=json',
-                        --         '--all-targets', '--all-features'
                     },
 
                     cargo = {
@@ -114,8 +110,6 @@ vim.cmd([[ command! RustWasm32 lua set_rust_target("wasm32-unknown-unknown")]])
 vim.cmd([[ command! RustMacos lua set_rust_target("aarch64-apple-darwin") ]])
 
 
-
-
 mason_lspconfig.setup_handlers({
     function(server_name)
         lspconfig[server_name].setup {
@@ -123,57 +117,8 @@ mason_lspconfig.setup_handlers({
             capabilities = capabilities,
         }
     end,
-    ["sumneko_lua"] = function()
-        -- local opts = {
-        --     on_attach = on_attach,
-        --     capabilities = capabilities,
-        -- }
-        -- local sumneko_opts = require("lsp.settings.sumneko_lua")
-        lspconfig["sumneko_lua"].setup({
-            on_attach = on_attach,
-            capabilities = capabilities,
-            -- settings = {
-            --     Lua = {
-            --         completion = {
-            --             callSnippet = "Replace"
-            --         }
-            --     }
-            -- }
-        })
-        -- opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
-        -- lspconfig["sumneko_lua"].setup(opts)
-    end,
     ["rust_analyzer"] = function()
-
         set_rust_target("aarch64-apple-darwin")
-        -- require("rust-tools").setup({
-        --     tools = {
-        --         reload_workspace_from_cargo_toml = true,
-        --         inlay_hints = {
-        --             show_parameter_hints = true,
-        --         },
-        --     },
-        --     server = {
-        --         experimental = {
-        --             procAttrMacros = true,
-        --         },
-        --         settings = {
-        --             ["rust-analyzer"] = {
-        --                 cargo = {
-        --                     target = "wasm32-unknown-unknown"
-        --                 },
-        --                 -- checkOnSave = {
-        --                 --     enable = true,
-        --                 --     allTargets = false,
-        --                 --
-        --                 -- },
-        --             },
-        --         },
-        --         on_attach = on_attach,
-        --         capabilities = capabilities,
-        --         standalone = true,
-        --     }
-        -- })
     end
 })
 
