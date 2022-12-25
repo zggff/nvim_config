@@ -76,7 +76,7 @@ mason_lspconfig.setup({
     ensure_installed = { "sumneko_lua" }
 })
 
-function set_rust_target(target)
+function SetRustTarget(target)
     require("rust-tools").setup({
         tools = {
             reload_workspace_from_cargo_toml = true,
@@ -117,8 +117,21 @@ mason_lspconfig.setup_handlers({
             capabilities = capabilities,
         }
     end,
+    ["sumneko_lua"] = function()
+        lspconfig["sumneko_lua"].setup {
+            settings = {
+                Lua = {
+                    completion = {
+                        callSnippet = "Replace"
+                    }
+                }
+            },
+            on_attach = on_attach,
+            capabilities = capabilities,
+        }
+    end,
     ["rust_analyzer"] = function()
-        set_rust_target("aarch64-apple-darwin")
+        SetRustTarget("aarch64-apple-darwin")
     end
 })
 
