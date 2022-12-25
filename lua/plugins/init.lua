@@ -111,12 +111,12 @@ require("lazy").setup(
                 -- require("todo-comments")
             end,
         },
-        {
-            "christoomey/vim-tmux-navigator",
-            config = function()
-                require("plugins.tmux")
-            end,
-        },
+        -- {
+        --     -- "christoomey/vim-tmux-navigator",
+        --     config = function()
+        --         require("plugins.tmux")
+        --     end,
+        -- },
         {
             "mfussenegger/nvim-dap",
             config = function()
@@ -246,6 +246,12 @@ require("lazy").setup(
             config = function()
                 require("plugins.neogit")
             end,
+        },
+        {
+            "sindrets/diffview.nvim",
+            config = function()
+                require("plugins.diffview")
+            end
         },
         {
             "mrjones2014/legendary.nvim",
