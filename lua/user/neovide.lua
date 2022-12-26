@@ -3,7 +3,17 @@ if not vim.g.neovide then
 end
 
 vim.g.neovide_hide_mouse_when_typing = true
-vim.g.gui_font_default_size = 20
+vim.g.gui_font_default_size = 16
+vim.g.neovide_transparency = 1.0
+vim.g.neovide_floating_blur_amount_x = 0
+vim.g.neovide_floating_blur_amount_y = 0
+vim.g.neovide_scroll_animation_length = 0.0
+vim.g.neovide_underline_automatic_scaling = false
+vim.g.neovide_input_macos_alt_is_meta = false
+vim.g.neovide_cursor_animation_length = 0.02
+
+
+
 vim.g.fonts = {
     "Cascadia Code",
     "CaskaydiaCove Nerd Font"

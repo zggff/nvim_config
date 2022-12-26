@@ -268,4 +268,5 @@ require("lazy").setup
         end
     },
     { "imsnif/kdl.vim" },
+    { "mg979/vim-visual-multi" }
 }
