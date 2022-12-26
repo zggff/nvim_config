@@ -109,15 +109,8 @@ require("lazy").setup
         "folke/todo-comments.nvim",
         config = function()
             require("todo-comments").setup()
-            -- require("todo-comments")
         end,
     },
-    -- {
-    --     -- "christoomey/vim-tmux-navigator",
-    --     config = function()
-    --         require("plugins.tmux")
-    --     end,
-    -- },
     {
         "mfussenegger/nvim-dap",
         config = function()
@@ -146,34 +139,27 @@ require("lazy").setup
         dependencies = { "nvim-lua/plenary.nvim" }
     },
 
-    -- Colorschemes
+    --------COLORSCHEMES--------
 
     { "lunarvim/colorschemes" }, -- A bunch of colorschemes you can try out
-    -- use("lunarvim/darkplus.nvim")
     { "folke/lsp-colors.nvim" },
     { "Shatur/neovim-ayu" },
-    { "karb94/neoscroll.nvim", config = function()
-        require("neoscroll").setup()
-    end },
-    {
-        "cormacrelf/dark-notify",
-        -- config = function()
-        -- require("dark_notify").run({})
-        -- end
-    },
-    { "olimorris/onedarkpro.nvim",
-        config = function()
-            -- require("plugins.onedarkpro")
-        end },
+
+    { "cormacrelf/dark-notify" },
+    { "olimorris/onedarkpro.nvim", config = function() require("colorschemes.onedarkpro") end },
     { "ellisonleao/gruvbox.nvim" },
     { "projekt0n/github-nvim-theme" },
+    { "rose-pine/neovim", name = "rose-pine", config = function() require("colorschemes.rose-pine") end },
+
+
+
+    --------LSP--------
+
     { "onsails/lspkind.nvim" },
     {
         "hrsh7th/nvim-cmp",
         dependencies = { "L3MON4D3/LuaSnip", "onsails/lspkind.nvim" },
-        config = function()
-            require("plugins.cmp")
-        end,
+        config = function() require("plugins.cmp") end,
     },
     { "hrsh7th/cmp-buffer" }, -- buffer completions
     { "hrsh7th/cmp-path" }, -- path completions
@@ -183,14 +169,11 @@ require("lazy").setup
     { "L3MON4D3/LuaSnip" }, --snippet engine
     { "rafamadriz/friendly-snippets" }, -- a bunch of snippets to use
 
-    -- LSP
     { "neovim/nvim-lspconfig" }, -- enable LSP
     {
         "glepnir/lspsaga.nvim",
         branch = "main",
-        config = function()
-            require("lsp.saga")
-        end
+        config = function() require("lsp.saga") end
     },
     { "williamboman/mason-lspconfig.nvim" },
     { "williamboman/mason.nvim",
@@ -204,7 +187,8 @@ require("lazy").setup
     { "jose-elias-alvarez/null-ls.nvim" }, -- for formatters and linters
     { "simrat39/rust-tools.nvim" }, -- improve lsp experience for rust
 
-    -- Telescope
+    --------TELESCOPE--------
+
     {
         "nvim-telescope/telescope.nvim",
         config = function()
@@ -220,7 +204,8 @@ require("lazy").setup
         requires = "nvim-telescope/telescope.nvim",
     },
 
-    -- Treesitter
+    --------TREESITTER--------
+
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
@@ -232,10 +217,9 @@ require("lazy").setup
         "nvim-treesitter/playground",
         requires = "nvim-treesitter/nvim-treesitter"
     },
-    { "NoahTheDuke/vim-just" },
-    { "davidgranstrom/nvim-markdown-preview" },
 
-    -- Git
+    --------GIT--------
+
     {
         "lewis6991/gitsigns.nvim",
         config = function()
@@ -267,6 +251,16 @@ require("lazy").setup
             require("leap").add_default_mappings()
         end
     },
+
+    --------SYNTAX--------
     { "imsnif/kdl.vim" },
-    { "mg979/vim-visual-multi" }
+    { "NoahTheDuke/vim-just" },
+
+    --------MISC--------
+
+    { "mg979/vim-visual-multi" },
+    { "davidgranstrom/nvim-markdown-preview" },
+    { "karb94/neoscroll.nvim", config = function()
+        require("neoscroll").setup()
+    end },
 }
