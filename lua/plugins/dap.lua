@@ -1,5 +1,9 @@
 local dap = require("dap")
 
+function DapSetDebugTarget(file)
+    vim.g.dap_debug_target = file
+end
+
 function MySplit(inputstr, sep)
     if sep == nil then
         sep = "%s"
@@ -13,7 +17,7 @@ end
 
 dap.adapters.lldb = {
     type = "executable",
-    command = "/opt/homebrew/Cellar/llvm/15.0.6/bin/lldb-vscode", -- adjust as needed
+    command = "/opt/homebrew/opt/llvm/bin/lldb-vscode", -- adjust as needed
     name = "lldb",
 }
 
@@ -23,6 +27,9 @@ dap.configurations.cpp = {
         type = 'lldb',
         request = 'launch',
         program = function()
+            if vim.g.dap_debug_target ~= nil then
+                return vim.g.dap_debug_target
+            end
             local cwd = vim.fn.getcwd()
             for _, val in ipairs(vim.fn.readdir(cwd)) do
                 if val == "a.out" then
@@ -45,6 +52,9 @@ dap.configurations.rust = {
         type = 'lldb',
         request = 'launch',
         program = function()
+            if vim.g.dap_debug_target ~= nil then
+                return vim.g.dap_debug_target
+            end
             local cwd = vim.fn.getcwd()
             local buffer = vim.api.nvim_buf_get_name(0)
             local buffer_split = MySplit(buffer, "/")
@@ -61,7 +71,8 @@ dap.configurations.rust = {
             end
             local is_cargo_src = vim.fn.count(buffer, cwd .. "/src/") ~= 0
             local is_cargo_bin = vim.fn.count(buffer, cwd .. "/src/bin/") ~= 0
-            if is_cargo_src ~= 0 and has_cargo then
+            print(is_cargo_src, is_cargo_bin)
+            if is_cargo_src and has_cargo then
                 local split = MySplit(cwd, "/")
                 local dirname = split[#split]
                 local target_directory = cwd .. "/target/debug/"
@@ -83,7 +94,7 @@ dap.configurations.rust = {
             if has_buffer then
                 return cwd .. "/" .. filename
             end
-            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+            return vim.fn.input('Path to executable: ', cwd .. '/', 'file')
         end,
         cwd = '${workspaceFolder}',
         stopOnEntry = false,
