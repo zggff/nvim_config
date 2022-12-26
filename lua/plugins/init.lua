@@ -258,7 +258,7 @@ require("lazy").setup
 
     --------MISC--------
 
-    { "mg979/vim-visual-multi" },
+    -- { "mg979/vim-visual-multi" },
     { "davidgranstrom/nvim-markdown-preview" },
     { "karb94/neoscroll.nvim", config = function()
         require("neoscroll").setup()

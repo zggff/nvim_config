@@ -11,6 +11,8 @@ vim.g.neovide_scroll_animation_length = 0.0
 vim.g.neovide_underline_automatic_scaling = false
 vim.g.neovide_input_macos_alt_is_meta = false
 vim.g.neovide_cursor_animation_length = 0.02
+vim.g.neovide_font_hinting = "none"
+vim.g.neovide_font_edging = "antialias"
 
 
 
@@ -34,9 +36,10 @@ vim.keymap.set({ "t" }, "<D-v>", [[<C-\>p<C-n>]], opts);
 RefreshGuiFont = function()
     local font_string = ""
     for _, font in ipairs(vim.g.fonts) do
-        font_string = font_string .. string.format("%s:h%s,", font, vim.g.gui_font_size)
+        font_string = font_string .. font .. ","
     end
-    vim.opt.guifont = font_string:sub(1, -2)
+    vim.opt.guifont = font_string:sub(1, -2) ..
+        string.format(":h%s:#h-%s:#e-%s", vim.g.gui_font_size, vim.g.neovide_font_hinting, vim.g.neovide_font_edging)
 end
 
 ResizeGuiFont = function(delta)
