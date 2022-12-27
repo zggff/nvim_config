@@ -5,5 +5,5 @@ require("user.neovide")
 
 require("plugins")
 
-require("user.colorscheme")
+require("colorschemes")
 require("lsp")
