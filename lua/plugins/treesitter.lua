@@ -1,22 +1,8 @@
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-if not status_ok then
-    return
-end
-
-
--- local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
--- parser_config.wgsl = {
---     install_info = {
---         url = "https://github.com/szebniok/tree-sitter-wgsl",
---         files = { "src/parser.c" }
---     },
--- }
-
-
-
-configs.setup({
-    ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-    sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+require("nvim-treesitter.configs").setup({
+    auto_install = true,
+    modules = {},
+    ensure_installed = {"c", "cpp", "rust", "python", "zig", "lua", "go", "javascript", "typescript"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    sync_install = true, -- install languages synchronously (only applied to `ensure_installed`)
     ignore_install = { "phpdoc" }, -- List of parsers to ignore installing
     autopairs = {
         enable = true,
@@ -24,17 +10,6 @@ configs.setup({
     highlight = {
         enable = true, -- false will disable the whole extension
         disable = { "" }, -- list of language that will be disabled
-        additional_vim_regex_highlighting = true,
     },
-    indent = { enable = true, disable = { "yaml", "html" } },
-    context_commentstring = {
-        enable = true,
-        enable_autocmd = false,
-    },
-    playground = {
-        enable = true,
-        disable = {},
-        updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-        persist_queries = false
-    }
+    indent = { enable = true, disable = { "" } },
 })

@@ -1,9 +1,4 @@
-local nvim_tree = require("nvim-tree")
-
-local nvim_tree_config = require("nvim-tree.config")
-local tree_cb = nvim_tree_config.nvim_tree_callback
-
-nvim_tree.setup({
+require("nvim-tree").setup({
     renderer = {
         icons = {
             glyphs = {
@@ -34,7 +29,6 @@ nvim_tree.setup({
     git = {
         ignore = false,
     },
-
     diagnostics = {
         enable = true,
         icons = {
@@ -44,14 +38,13 @@ nvim_tree.setup({
             error = "",
         },
     },
-    view = {
-        mappings = {
-            custom_only = false,
-            list = {
-                { key = "h", cb = tree_cb("close_node") },
-                { key = "v", cb = tree_cb("vsplit") },
-            },
-        },
-    },
-
+    -- view = {
+    --     mappings = {
+    --         custom_only = false,
+    --         list = {
+    --             { key = "h", cb = tree_cb("close_node") },
+    --             { key = "v", cb = tree_cb("vsplit") },
+    --         },
+    --     },
+    -- },
 })

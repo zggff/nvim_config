@@ -2,7 +2,10 @@ local cmp = require("cmp")
 local luasnip = require("luasnip")
 local lspkind = require('lspkind')
 
-require("luasnip/loaders/from_vscode").lazy_load({
+require("luasnip.loaders.from_vscode").lazy_load({
+    paths = {
+        "~/.local/share/nvim/lazy/friendly-snippets"
+    }
 })
 
 local check_backspace = function()
@@ -42,7 +45,8 @@ cmp.setup({
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
+            elseif luasnip.jumpable(-2) then
+
                 luasnip.jump(-1)
             else
                 fallback()

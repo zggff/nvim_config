@@ -3,7 +3,8 @@ require("catppuccin").setup({
         light = "latte",
         dark = "mocha",
     },
+    term_colors = false,
     dim_inactive = {
-        enabled = true
+        enabled = false
     }
 })

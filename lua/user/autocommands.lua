@@ -11,11 +11,6 @@ vim.cmd([[
     autocmd FileType gitcommit setlocal wrap
     autocmd FileType gitcommit setlocal spell
   augroup end
-  augroup _markdown
-    autocmd!
-    autocmd FileType markdown setlocal wrap
-    autocmd FileType markdown setlocal spell
-  augroup end
   augroup _auto_resize
     autocmd!
     autocmd VimResized * tabdo wincmd = 
@@ -30,8 +25,5 @@ vim.cmd([[
      autocmd FileType haskell set tabstop=2  
    augroup end
   au BufNewFile,BufRead *.wgsl set filetype=wgsl
- augroup _lsp
-   autocmd!
-     autocmd BufWritePre * lua vim.lsp.buf.format()
- augroup end
+  au BufNewFile,BufRead *.s,*.S set filetype=arm " arm = armv6/7
 ]])

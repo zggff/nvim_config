@@ -103,6 +103,7 @@ local mappings = {
         d = { "<cmd>Telescope diagnostics<CR>", "diagnostics" },
         s = { "<cmd>Telescope lsp_document_symbols<CR>", "document symbols" },
         S = { "<cmd>Telescope lsp_workspace_symbols<CR>", "workspace symbols" },
+        f = { "<cmd>Format<CR>", "format"},
 
         b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle breakpoint" },
         -- B = {

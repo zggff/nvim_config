@@ -1,8 +1,34 @@
 local dap = require("dap")
 
-function DapSetDebugTarget(file)
-    vim.g.dap_debug_target = file
+
+function SetDebugTarget()
+    -- vim.g.dap_debug_target = vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    vim.ui.input({
+        prompt = "path to executable: ",
+        default = vim.fn.getcwd() .. '/',
+        completion = "file",
+    }, function(input) vim.g.dap_debug_target = input end)
+
 end
+
+function SetBuildCommand()
+    vim.ui.input({
+        prompt = "build command: ",
+        completion = "shellcmd"
+    }, function(input)
+
+        if input ~= nil then
+            input = input:gsub("%%", vim.fn.expand("%"))
+        end
+        vim.g.dap_build_command = input
+
+    end)
+end
+
+vim.cmd([[
+command! SetDebugTarget lua SetDebugTarget()
+command! SetBuildCommand lua SetBuildCommand()
+]])
 
 function MySplit(inputstr, sep)
     if sep == nil then
@@ -27,6 +53,9 @@ dap.configurations.cpp = {
         type = 'lldb',
         request = 'launch',
         program = function()
+            if vim.g.dap_build_command ~= nil then
+                io.popen(vim.g.dap_build_command)
+            end
             if vim.g.dap_debug_target ~= nil then
                 return vim.g.dap_debug_target
             end
@@ -52,6 +81,9 @@ dap.configurations.rust = {
         type = 'lldb',
         request = 'launch',
         program = function()
+            if vim.g.dap_build_command ~= nil then
+                io.popen(vim.g.dap_build_command)
+            end
             if vim.g.dap_debug_target ~= nil then
                 return vim.g.dap_debug_target
             end
@@ -157,6 +189,25 @@ dap.configurations.python = {
             end
         end;
     },
+}
+
+dap.adapters.delve = {
+    type = 'server',
+    port = '${port}',
+    executable = {
+        command = 'dlv',
+        args = { 'dap', '-l', '127.0.0.1:${port}' },
+    }
+}
+
+dap.configurations.go = {
+    {
+        type = "delve",
+        name = "debug file",
+        request = "launch",
+        program = "${file}"
+    },
+
 }
 
 vim.cmd([[

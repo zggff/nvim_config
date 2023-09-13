@@ -51,7 +51,7 @@ vim.diagnostic.config({
 local on_attach = function(client, bufnr)
     local opts = { noremap = true, silent = true }
     keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
-    keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
+    keymap.set("n", "gD", "<cmd>Lspsaga goto_definition<CR>", opts) -- got to declaration
     keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
     keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
     -- keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
@@ -73,7 +73,7 @@ local capabilities = cmp_nvim_lsp.default_capabilities()
 
 mason.setup();
 mason_lspconfig.setup({
-    ensure_installed = { "sumneko_lua" }
+    ensure_installed = { "lua_ls" }
 })
 
 function SetRustTarget(target)
@@ -106,8 +106,8 @@ function SetRustTarget(target)
     })
 end
 
-vim.cmd([[ command! RustWasm32 lua set_rust_target("wasm32-unknown-unknown")]])
-vim.cmd([[ command! RustMacos lua set_rust_target("aarch64-apple-darwin") ]])
+vim.cmd([[ command! RustWasm32 lua SetRustTarget("wasm32-unknown-unknown")]])
+vim.cmd([[ command! RustMacos lua SetRustTarget("aarch64-apple-darwin") ]])
 
 
 mason_lspconfig.setup_handlers({
@@ -117,8 +117,8 @@ mason_lspconfig.setup_handlers({
             capabilities = capabilities,
         }
     end,
-    ["sumneko_lua"] = function()
-        lspconfig["sumneko_lua"].setup {
+    ["lua_ls"] = function()
+        lspconfig["lua_ls"].setup {
             settings = {
                 Lua = {
                     completion = {
@@ -134,6 +134,26 @@ mason_lspconfig.setup_handlers({
         SetRustTarget("aarch64-apple-darwin")
     end
 })
+
+lspconfig.hls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
+lspconfig.crystalline.setup {
+    -- on_attach = on_attach,
+    -- capabilities = capabilities
+}
+lspconfig.denols.setup {
+  on_attach = on_attach,
+  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+}
+
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  root_dir = lspconfig.util.root_pattern("package.json"),
+  single_file_support = false
+}
 
 -- TODO: figure out how to make sourcekit work
 -- lspconfig.sourcekit.setup({
