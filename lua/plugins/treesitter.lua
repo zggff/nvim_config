@@ -1,5 +1,5 @@
 require("nvim-treesitter.configs").setup({
-    auto_install = true,
+    auto_install = false,
     modules = {},
     ensure_installed = {"c", "cpp", "rust", "python", "zig", "lua", "go", "javascript", "typescript"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     sync_install = true, -- install languages synchronously (only applied to `ensure_installed`)

@@ -58,7 +58,7 @@ local mappings = {
     a = { "<cmd>Legendary<cr>", "Legendary" },
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     q = { "<cmd>q<CR>", "Quit" },
-    c = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+    c = { "<cmd>bdelete!<CR>", "Close Buffer" },
 
 
     w = { "<cmd>w!<CR>", "Save" },
