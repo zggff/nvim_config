@@ -23,7 +23,8 @@ require("lazy").setup
     { "nvim-lualine/lualine.nvim",           config = function() require("plugins.lualine") end },    -- bottom line
     { "ahmedkhalf/project.nvim",             config = function() require("plugins.project") end },
     { "lewis6991/impatient.nvim",            config = function() require("impatient").enable_profile() end, },
-    { "lukas-reineke/indent-blankline.nvim", config = function() require("plugins.indentline") end, },
+    { "lukas-reineke/indent-blankline.nvim", main = "ibl",                                                  config = function()
+        require("plugins.indentline") end },
     { "goolord/alpha-nvim",                  config = function() require("plugins.alpha") end, },
     { "antoinemadec/FixCursorHold.nvim" }, -- This is needed to fix lsp doc highlight
     { "folke/which-key.nvim",                config = function() require("plugins.whichkey") end, },
@@ -90,6 +91,7 @@ require("lazy").setup
     { "jose-elias-alvarez/null-ls.nvim" }, -- for formatters and linters
     { "simrat39/rust-tools.nvim" },        -- improve lsp experience for rust
     { "folke/neodev.nvim",                config = function() require("neodev").setup() end },
+    { "lervag/vimtex",                    config = function() require("plugins.latex") end },
     -- { "mrcjkb/haskell-tools.nvim", dependencies = {'nvim-lua/plenary.nvim','nvim-telescope/telescope.nvim'}},
 
 
@@ -109,9 +111,10 @@ require("lazy").setup
 
     --------TELESCOPE--------
 
-    { "nvim-telescope/telescope.nvim",           config = function() require("plugins.telescope") end },
-    { "gbrlsnchs/telescope-lsp-handlers.nvim",   requires = "nvim-telescope/telescope.nvim" },
-    { "nvim-telescope/telescope-ui-select.nvim", requires = "nvim-telescope/telescope.nvim", },
+    { "nvim-telescope/telescope.nvim",             config = function() require("plugins.telescope") end },
+    { "gbrlsnchs/telescope-lsp-handlers.nvim",     requires = "nvim-telescope/telescope.nvim" },
+    { "nvim-telescope/telescope-ui-select.nvim",   requires = "nvim-telescope/telescope.nvim", },
+    { "nvim-telescope/telescope-media-files.nvim", requires = "nvim-telescope/telescope.nvim" },
 
     --------TREESITTER--------
 
@@ -166,7 +169,7 @@ require("lazy").setup
     { "imsnif/kdl.vim" },
     { "vim-crystal/vim-crystal" },
     { "alaviss/nim.nvim" },
-    { "ARM9/arm-syntax-vim" },
+    -- { "ARM9/arm-syntax-vim" },
     { "NoahTheDuke/vim-just" },
     { "nvim-neorg/neorg",       config = function() require("plugins.neorg") end },
 
@@ -186,10 +189,10 @@ require("lazy").setup
             require("plugins.comment")
         end,
     },
-    -- { "mg979/vim-visual-multi" },
+    { "mg979/vim-visual-multi" },
     { "davidgranstrom/nvim-markdown-preview" },
-    { "echasnovski/mini.nvim", config = function() require("plugins.mini") end },
-    { "karb94/neoscroll.nvim", config = function() require("neoscroll").setup() end },
+    { "echasnovski/mini.nvim",                      config = function() require("plugins.mini") end },
+    { "karb94/neoscroll.nvim",                      config = function() require("neoscroll").setup() end },
     { "m00qek/baleia.nvim" },
     {
         "samodostal/image.nvim",

@@ -1,0 +1,21 @@
+snippet lualatex_rus default document
+	%! TeX program = lualatex
+	\documentclass[12pt]{article}
+	\usepackage[a4paper, margin={10mm, 10mm}, includefoot]{geometry}
+
+	% allow usage of russian language
+	\usepackage{polyglossia}
+	\setmainlanguage{russian} 
+	\setotherlanguage{english}
+	\setmainfont{Times New Roman}
+
+	\usepackage{blindtext}
+	\usepackage{amsmath}
+	\usepackage{enumitem}
+
+	\author{Max Giga <gigamaximwachau@gmail.com>}
+	\title{TITLE}
+
+	\begin{document}
+	\maketitle
+	\end{document}

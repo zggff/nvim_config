@@ -19,25 +19,25 @@ local setup = {
     },
     popup_mappings = {
         scroll_down = "<c-d>", -- binding to scroll down inside the popup
-        scroll_up = "<c-u>", -- binding to scroll up inside the popup
+        scroll_up = "<c-u>",   -- binding to scroll up inside the popup
     },
     window = {
-        border = "rounded", -- none, single, double, shadow
-        position = "bottom", -- bottom, top
-        margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
+        border = "rounded",       -- none, single, double, shadow
+        position = "bottom",      -- bottom, top
+        margin = { 1, 0, 1, 0 },  -- extra window margin [top, right, bottom, left]
         padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
         winblend = 0,
     },
     layout = {
-        height = { min = 4, max = 25 }, -- min and max height of the columns
-        width = { min = 20, max = 50 }, -- min and max width of the columns
-        spacing = 3, -- spacing between columns
-        align = "left", -- align columns left, center or right
+        height = { min = 4, max = 25 },                                           -- min and max height of the columns
+        width = { min = 20, max = 50 },                                           -- min and max width of the columns
+        spacing = 3,                                                              -- spacing between columns
+        align = "left",                                                           -- align columns left, center or right
     },
-    ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
+    ignore_missing = true,                                                        -- enable this to hide mappings for which you didn't specify a label
     hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
-    show_help = true, -- show help message on the command line when the popup is visible
-    triggers = "auto", -- automatically setup triggers
+    show_help = true,                                                             -- show help message on the command line when the popup is visible
+    triggers = "auto",                                                            -- automatically setup triggers
     triggers_blacklist = {
         i = { "j", "k" },
         v = { "j", "k" },
@@ -45,12 +45,12 @@ local setup = {
 }
 
 local opts = {
-    mode = "n", -- NORMAL mode
+    mode = "n",     -- NORMAL mode
     prefix = "<leader>",
-    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
+    buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true,  -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps
-    nowait = true, -- use `nowait` when creating keymaps
+    nowait = true,  -- use `nowait` when creating keymaps
 }
 
 local mappings = {
@@ -64,12 +64,12 @@ local mappings = {
     w = { "<cmd>w!<CR>", "Save" },
     h = { "<cmd>nohlsearch<CR>", "No Highlight" },
     f = {
-        "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+        "<cmd>Telescope find_files<cr>",
         "Find files",
     },
-    F = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+    F = { "<cmd>Telescope live_grep<cr>", "Find Text" },
     -- ["p"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-    b = { "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+    b = { "<cmd>Telescope buffers<cr>",
         "Buffers",
     },
 
@@ -79,7 +79,7 @@ local mappings = {
         j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
         k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
         l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-        p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
+        p = { "<cmd>lua require 'gitsigns'.preview_hunk_inline()<cr>", "Preview Hunk" },
         r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
         R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
         s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
@@ -103,7 +103,7 @@ local mappings = {
         d = { "<cmd>Telescope diagnostics<CR>", "diagnostics" },
         s = { "<cmd>Telescope lsp_document_symbols<CR>", "document symbols" },
         S = { "<cmd>Telescope lsp_workspace_symbols<CR>", "workspace symbols" },
-        f = { "<cmd>Format<CR>", "format"},
+        f = { "<cmd>Format<CR>", "format" },
 
         b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle breakpoint" },
         -- B = {
