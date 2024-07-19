@@ -171,7 +171,7 @@ require("lazy").setup
     { "alaviss/nim.nvim" },
     -- { "ARM9/arm-syntax-vim" },
     { "NoahTheDuke/vim-just" },
-    { "nvim-neorg/neorg",       config = function() require("plugins.neorg") end },
+    -- { "nvim-neorg/neorg",       config = function() require("plugins.neorg") end },
 
     --------MISC--------
 
