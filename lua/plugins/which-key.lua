@@ -24,4 +24,9 @@ which_key.add({
     { "<leader>lt", "<cmd>lua require'dap'.repl.toggle()<cr>",       desc = "Toggle dap repl" },
     { "<leader>lT", "<cmd>lua require'dapui'.toggle()<cr>",          desc = "Toggle dapui" },
     { "<leader>d",  desc = "Show diagnostics" },
+
+    { "<leader>t",  group = "Terminal" },
+    { "<leader>tf", "<cmd>ToggleTerm direction=float<cr>",              desc = "Float" },
+    { "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Horizontal" },
+    { "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>",   desc = "Vertical" },
 })

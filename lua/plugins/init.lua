@@ -31,8 +31,9 @@ require("lazy").setup({
     { "folke/which-key.nvim",       config = function() require_local("plugins.which-key") end },
     { "nvim-lualine/lualine.nvim",  config = function() require_local("plugins.lualine") end },
     { "akinsho/bufferline.nvim",    config = function() require_local("plugins.bufferline") end },
-    { "luukvbaal/statuscol.nvim",   config = function() require_local("plugins.statuscol") end },
     { "windwp/nvim-autopairs",      config = function() require_local("plugins.autopairs") end },
+    { "ahmedkhalf/project.nvim",    config = function() require_local("plugins.project") end },
+    { "akinsho/toggleterm.nvim",    config = function() require_local("plugins.toggleterm") end },          -- terminal
 
 
     -- GIT
