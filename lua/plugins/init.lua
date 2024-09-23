@@ -27,18 +27,19 @@ require("lazy").setup({
 
 
     -- USEFUL STUFF
-    { "nvim-tree/nvim-tree.lua",    config = function() require_local("plugins.nvim-tree") end },
-    { "folke/which-key.nvim",       config = function() require_local("plugins.which-key") end },
-    { "nvim-lualine/lualine.nvim",  config = function() require_local("plugins.lualine") end },
-    { "akinsho/bufferline.nvim",    config = function() require_local("plugins.bufferline") end },
-    { "windwp/nvim-autopairs",      config = function() require_local("plugins.autopairs") end },
-    { "ahmedkhalf/project.nvim",    config = function() require_local("plugins.project") end },
-    { "akinsho/toggleterm.nvim",    config = function() require_local("plugins.toggleterm") end },          -- terminal
+    { "nvim-tree/nvim-tree.lua",         config = function() require_local("plugins.nvim-tree") end },
+    { "folke/which-key.nvim",            config = function() require_local("plugins.which-key") end },
+    { "nvim-lualine/lualine.nvim",       config = function() require_local("plugins.lualine") end },
+    { "akinsho/bufferline.nvim",         config = function() require_local("plugins.bufferline") end },
+    { "windwp/nvim-autopairs",           config = function() require_local("plugins.autopairs") end },
+    { "ahmedkhalf/project.nvim",         config = function() require_local("plugins.project") end },
+    { "akinsho/toggleterm.nvim",         config = function() require_local("plugins.toggleterm") end }, -- terminal
+    { "nvim-treesitter/nvim-treesitter", config = function() require_local("plugins.treesitter") end },
 
 
     -- GIT
-    { "lewis6991/gitsigns.nvim",    config = function() require_local("plugins.gitsigns") end },
-    { "NeogitOrg/neogit",           config = function() require_local("plugins.neogit") end },
+    { "lewis6991/gitsigns.nvim",         config = function() require_local("plugins.gitsigns") end },
+    { "NeogitOrg/neogit",                config = function() require_local("plugins.neogit") end },
 
 
     -- TELESCOPE
@@ -64,12 +65,12 @@ require("lazy").setup({
             "mhartington/formatter.nvim",
             "williamboman/mason-lspconfig.nvim",
             "glepnir/lspsaga.nvim",
+            "nvimtools/none-ls.nvim",
         }
     },
 
 
     -- CMP
-    { "onsails/lspkind.nvim" },
     {
         "hrsh7th/nvim-cmp",
         config = function() require_local("plugins.cmp") end,
@@ -80,7 +81,8 @@ require("lazy").setup({
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline",
             "rafamadriz/friendly-snippets",
-            "glepnir/lspsaga.nvim"
+            "glepnir/lspsaga.nvim",
+            "onsails/lspkind.nvim"
         }
     },
 
