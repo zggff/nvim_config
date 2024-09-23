@@ -35,6 +35,7 @@ require("lazy").setup({
     { "ahmedkhalf/project.nvim",         config = function() require_local("plugins.project") end },
     { "akinsho/toggleterm.nvim",         config = function() require_local("plugins.toggleterm") end }, -- terminal
     { "nvim-treesitter/nvim-treesitter", config = function() require_local("plugins.treesitter") end },
+    { "numToStr/Comment.nvim",           config = function() require_local("plugins.comment") end },
 
 
     -- GIT
