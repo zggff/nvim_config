@@ -1,7 +1,7 @@
 require("project_nvim").setup({
     active = true,
     detection_methods = { "pattern" },
-    patterns = { "justfile", ".git", "makefile" },
+    patterns = { "justfile", ".git" },
 })
 
 local status, telescope = pcall(require, "telescope")
