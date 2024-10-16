@@ -41,7 +41,7 @@ require("lazy").setup({
     -- GIT
     { "lewis6991/gitsigns.nvim",         config = function() require_local("plugins.gitsigns") end },
     { "NeogitOrg/neogit",                config = function() require_local("plugins.neogit") end },
-    { "sindrets/diffview.nvim"},
+    { "sindrets/diffview.nvim" },
 
 
     -- TELESCOPE
@@ -68,6 +68,7 @@ require("lazy").setup({
             "williamboman/mason-lspconfig.nvim",
             "glepnir/lspsaga.nvim",
             "nvimtools/none-ls.nvim",
+            "nvimtools/none-ls-extras.nvim"
         }
     },
 
