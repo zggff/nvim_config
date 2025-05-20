@@ -69,10 +69,19 @@ require("lazy").setup({
             "williamboman/mason-lspconfig.nvim",
             "glepnir/lspsaga.nvim",
             "nvimtools/none-ls.nvim",
-            "nvimtools/none-ls-extras.nvim"
+            "nvimtools/none-ls-extras.nvim",
+            'stevearc/dressing.nvim', -- optional for vim.ui.select
+            'nvim-lua/plenary.nvim',
+            'nvim-flutter/flutter-tools.nvim',
+
+
         }
     },
-
+    {
+        "folke/trouble.nvim",
+        opts = {},
+        cmd = "Trouble",
+    },
 
     -- CMP
     {

@@ -6,9 +6,15 @@ local saga = require("lspsaga")
 local null_ls = require("null-ls")
 
 
+
 null_ls.setup({
     sources = {
-        null_ls.builtins.formatting.black,
+        -- null_ls.builtins.formatting.black,
+        -- null_ls.builtins.formatting.ruff,
+        require("none-ls.diagnostics.flake8"),
+        require("none-ls.formatting.ruff"),
+        -- null_ls.builtins.diagnostics.pylint
+        -- null_ls.extras.diagnostics.flake8
     }
 })
 
@@ -23,7 +29,7 @@ saga.setup({
         enable_in_insert = false,
     },
 })
-
+--
 local signs = { Error = " ", Warn = " ", Hint = "", Info = " " }
 for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
@@ -93,6 +99,8 @@ function SetRustTarget(target)
     })
 end
 
+-- lspconfig.pylsp.setup{}
+--
 mason_lspconfig.setup_handlers({
     function(server_name)
         lspconfig[server_name].setup {
@@ -139,3 +147,11 @@ mason_lspconfig.setup_handlers({
         SetRustTarget("aarch64-apple-darwin")
     end
 })
+
+
+require("flutter-tools").setup {
+    lsp = {
+        on_attach = on_attach,
+        capabilities = capabilities,
+    }
+}
