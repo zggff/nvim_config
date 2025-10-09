@@ -1,6 +1,6 @@
 require("colorschemes.catppuccin")
 
--- vim.g.dark_theme = "rose-pine"
+vim.g.dark_theme = "rose-pine"
 -- vim.g.light_theme = "rose-pine"
 
 vim.g.dark_theme = "catppuccin"
