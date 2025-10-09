@@ -181,13 +181,6 @@ require("lazy").setup({
 			file_pattern = { "*.ju.*" },
 		},
 	},
-	{
-        "OXY2DEV/foldtext.nvim",
-        config = function ()
-            require_local("plugins.fold")
-        end
-	},
-
 	-- CMP
 	{
 		"hrsh7th/nvim-cmp",
