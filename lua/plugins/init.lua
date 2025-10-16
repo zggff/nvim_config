@@ -139,9 +139,6 @@ require("lazy").setup({
 		end,
 
 		dependencies = {
-			"williamboman/mason.nvim",
-			"mhartington/formatter.nvim",
-			"williamboman/mason-lspconfig.nvim",
 			"glepnir/lspsaga.nvim",
 			"nvimtools/none-ls.nvim",
 			"nvimtools/none-ls-extras.nvim",
@@ -209,4 +206,12 @@ require("lazy").setup({
 	{ "cormacrelf/dark-notify" },
 	{ "catppuccin/nvim", name = "catppuccin" },
 	{ "rose-pine/neovim", name = "rose-pine" },
+
+	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = { "kevinhwang91/promise-async" },
+        config = function ()
+            require_local("plugins.fold")
+        end
+	},
 })

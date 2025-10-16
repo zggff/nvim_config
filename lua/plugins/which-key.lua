@@ -21,13 +21,7 @@ which_key.add({
 	{ "<leader>ld", "<cmd>Telescope diagnostics<CR>", desc = "diagnostics" },
 	{ "<leader>ls", "<cmd>Telescope lsp_document_symbols<CR>", desc = "document symbols" },
 	{ "<leader>lS", "<cmd>Telescope lsp_workspace_symbols<CR>", desc = "workspace symbols" },
-	{
-		"<leader>lf",
-		function()
-			require("conform").format()
-		end,
-		desc = "format",
-	},
+	{ "<leader>lf", "<cmd>Format<CR>", desc = "format" },
 	{ "<leader>lb", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "Toggle breakpoint" },
 	{ "<leader>lt", "<cmd>lua require'dap'.repl.toggle()<cr>", desc = "Toggle dap repl" },
 	{ "<leader>lT", "<cmd>lua require'dapui'.toggle()<cr>", desc = "Toggle dapui" },
@@ -41,5 +35,5 @@ which_key.add({
 	{ "<leader>n", group = "jupyter" },
 	{ "<leader>nn", "<cmd>Neopyter run current<cr>", desc = "run current" },
 	{ "<leader>nm", "<cmd>Neopyter run all<cr>", desc = "run all" },
-	{ "<leader>n,", "<cmd>Neopyter run allAbove<cr>", desc = "run above" },
+	{ "<leader>nb", "<cmd>Neopyter run allAbove<cr>", desc = "run above" },
 })

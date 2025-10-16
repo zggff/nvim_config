@@ -1,6 +1,4 @@
-local mason_lspconfig = require("mason-lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
-local mason = require("mason")
 local saga = require("lspsaga")
 local null_ls = require("null-ls")
 local conform = require("conform")
@@ -60,20 +58,41 @@ end
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-mason.setup()
-mason_lspconfig.setup({
-	ensure_installed = { "lua_ls" },
+vim.lsp.enable("clangd")
+vim.lsp.enable("sourcekit")
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("gopls")
+
+vim.lsp.config("sourcekit", {
+	filetypes = { "swift" },
 })
 
-vim.lsp.enable("sourcekit")
+vim.lsp.config("gopls", {
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
+			gofumpt = true,
+		},
+	},
+})
+
 vim.lsp.config("*", {
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
 
-require("flutter-tools").setup({
-	lsp = {
-		on_attach = on_attach,
-		capabilities = capabilities,
-	},
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(_)
+		on_attach()
+	end,
 })
+
+local function format()
+    vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+end
+
+vim.api.nvim_create_user_command("Format", format, {nargs = 0,
+    desc = "format buffer"})

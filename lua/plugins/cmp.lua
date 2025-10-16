@@ -5,6 +5,7 @@ local lspkind = require('lspkind')
 require("luasnip.loaders.from_vscode").lazy_load()
 require("luasnip.loaders.from_snipmate").lazy_load()
 
+
 local check_backspace = function()
     local col = vim.fn.col(".") - 1
     return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
@@ -43,8 +44,7 @@ cmp.setup({
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif luasnip.jumpable(-2) then
-
+            elseif luasnip.jumpable(-1) then
                 luasnip.jump(-1)
             else
                 fallback()
@@ -69,12 +69,12 @@ cmp.setup({
     },
     sources = {
         { name = "nvim_lsp" },
-        { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
         { name = "neopyter" },
     },
 })
+
 function LeaveSnippet()
     if ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
         and require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()]
@@ -84,8 +84,7 @@ function LeaveSnippet()
     end
 end
 
--- disable feature of returning to snippets
+--- disable feature of returning to snippets
 vim.api.nvim_command([[
     autocmd ModeChanged * lua LeaveSnippet()
 ]])
-
