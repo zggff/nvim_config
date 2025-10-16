@@ -25,6 +25,7 @@ cmp.setup({
             "i",
             "s",
         }),
+        ["<C-Space>"] = cmp.mapping(cmp.mapping.complete({}), { "i", "c" })
     },
     formatting = {
         fields = { "kind", "abbr", "menu" },
