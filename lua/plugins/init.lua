@@ -67,12 +67,12 @@ require("lazy").setup({
 			require_local("plugins.project")
 		end,
 	},
-	{
-		"akinsho/toggleterm.nvim",
-		config = function()
-			require_local("plugins.toggleterm")
-		end,
-	}, -- terminal
+	-- {
+	-- 	"akinsho/toggleterm.nvim",
+	-- 	config = function()
+	-- 		require_local("plugins.toggleterm")
+	-- 	end,
+	-- }, -- terminal
 	{
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
@@ -145,7 +145,6 @@ require("lazy").setup({
 			"stevearc/dressing.nvim", -- optional for vim.ui.select
 			"nvim-lua/plenary.nvim",
 			"nvim-flutter/flutter-tools.nvim",
-			"stevearc/conform.nvim",
 		},
 	},
 	{
@@ -164,15 +163,6 @@ require("lazy").setup({
 			parser = {
 				trim_whitespace = true,
 			},
-			-- textobject = {
-			-- 	enable = true,
-			-- 	queries = {
-			-- 		"linemagic",
-			-- 		"cellseparator",
-			-- 		"cellcontent",
-			-- 		"cell",
-			-- 	},
-			-- },
 			mode = "direct",
 			remote_address = "127.0.0.1:9001",
 			file_pattern = { "*.ju.*" },

@@ -1,14 +1,6 @@
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local saga = require("lspsaga")
 local null_ls = require("null-ls")
-local conform = require("conform")
-
-conform.setup({
-	formatters_by_ft = {
-		lua = { "stylua" },
-		swift = { "swift_format" },
-	},
-})
 
 null_ls.setup({
 	sources = {
