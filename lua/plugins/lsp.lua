@@ -27,10 +27,12 @@ saga.setup({
 vim.diagnostic.config({
 	virtual_text = true,
 	signs = {
-        [vim.diagnostic.severity.ERROR] = " ",
-        [vim.diagnostic.severity.WARN] = " ",
-        [vim.diagnostic.severity.HINT] = " ",
-        [vim.diagnostic.severity.INFO] = " ",
+        text = {
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.HINT] = " ",
+            [vim.diagnostic.severity.INFO] = " ",
+        }
     },
 	underline = false,
 	update_in_insert = true,

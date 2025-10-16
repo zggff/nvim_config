@@ -1,6 +1,6 @@
 require('bufferline').setup({
     options = {
-        offsets = { 
+        offsets = {
             { filetype = "NvimTree", text = "", padding = 1 }
         },
     }

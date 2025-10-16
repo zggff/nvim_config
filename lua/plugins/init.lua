@@ -46,7 +46,7 @@ require("lazy").setup({
 	{
 		"nvim-lualine/lualine.nvim",
 		config = function()
-			require_local("plugins.lualine")
+            require('lualine').setup({})
 		end,
 	},
 	{
@@ -82,13 +82,13 @@ require("lazy").setup({
 	{
 		"numToStr/Comment.nvim",
 		config = function()
-			require_local("plugins.comment")
+            require('Comment').setup()
 		end,
 	},
 	{
 		"folke/todo-comments.nvim",
 		config = function()
-			require_local("plugins.todo")
+            require("todo-comments").setup()
 		end,
 	},
 
@@ -96,7 +96,7 @@ require("lazy").setup({
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
-			require_local("plugins.gitsigns")
+            require('gitsigns').setup({})
 		end,
 	},
 	{
@@ -176,7 +176,7 @@ require("lazy").setup({
 		end,
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
-			"L3MON4D3/LuaSnip",
+			-- "L3MON4D3/LuaSnip",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
