@@ -1,9 +1,9 @@
 local M = {}
 
---- Runs a command and displays its result in a floating window.
---- @param args (string[]) Command to execute
+--- Displays text in a floating window.
+--- @param text (string) Command to execute
 --- @param title (string) Window title
-local function run(args, title)
+local function display(text, title)
     local buf = vim.api.nvim_create_buf(false, true)
     local ui = vim.api.nvim_list_uis()[1]
 
@@ -36,11 +36,18 @@ local function run(args, title)
 
     local term = vim.api.nvim_open_term(buf, { force_crlf = true })
     vim.api.nvim_set_current_win(win)
+    vim.api.nvim_chan_send(term, text)
+end
+
+--- Runs a command and displays its result in a floating window.
+--- @param args (string[]) Command to execute
+--- @param title (string) Window title
+local function run(args, title)
     local res = vim.system(args):wait()
-    vim.api.nvim_chan_send(term, res.stderr)
-    vim.api.nvim_chan_send(term, res.stdout)
+    display(res.stderr .. "\n" .. res.stdout, title)
 end
 
 M.run = run
+M.display = run
 
 return M
