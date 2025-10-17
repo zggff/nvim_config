@@ -22,9 +22,6 @@ which_key.add({
 	{ "<leader>ls", "<cmd>Telescope lsp_document_symbols<CR>", desc = "document symbols" },
 	{ "<leader>lS", "<cmd>Telescope lsp_workspace_symbols<CR>", desc = "workspace symbols" },
 	{ "<leader>lf", "<cmd>Format<CR>", desc = "format" },
-	{ "<leader>lb", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "Toggle breakpoint" },
-	{ "<leader>lt", "<cmd>lua require'dap'.repl.toggle()<cr>", desc = "Toggle dap repl" },
-	{ "<leader>lT", "<cmd>lua require'dapui'.toggle()<cr>", desc = "Toggle dapui" },
 	{ "<leader>d", "<cmd>Lspsaga show_line_diagnostics<cr>", desc = "Show diagnostics" },
 
 	{ "<leader>t", group = "Terminal" },
