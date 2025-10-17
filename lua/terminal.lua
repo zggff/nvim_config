@@ -5,16 +5,17 @@ local M = {}
 --- @param title (string) Window title
 local function run(args, title)
     local buf = vim.api.nvim_create_buf(false, true)
-    local width = vim.api.nvim_win_get_width(0)
-    local height = vim.api.nvim_win_get_height(0)
-    local new_width = math.floor(width / 2)
-    local new_height = math.floor(height / 2)
+    local ui = vim.api.nvim_list_uis()[1]
+
+    local width = math.floor(ui.width / 2)
+    local height = math.floor(ui.height / 2)
+
     local win = vim.api.nvim_open_win(buf, true, {
         relative = "editor",
-        col = (width - 1 - new_width) / 2,
-        row = (height - 1 - new_height) / 2,
-        width = new_width,
-        height = new_height,
+        col = ui.width / 2 - width / 2,
+        row = ui.height / 2 - height / 2,
+        width = width,
+        height = height,
         focusable = true,
         border = "rounded",
         title_pos = 'center',
