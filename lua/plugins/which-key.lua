@@ -29,8 +29,4 @@ which_key.add({
 	{ "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Horizontal" },
 	{ "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "Vertical" },
 
-	{ "<leader>n", group = "jupyter" },
-	{ "<leader>nn", "<cmd>Neopyter run current<cr>", desc = "run current" },
-	{ "<leader>nm", "<cmd>Neopyter run all<cr>", desc = "run all" },
-	{ "<leader>nb", "<cmd>Neopyter run allAbove<cr>", desc = "run above" },
 })

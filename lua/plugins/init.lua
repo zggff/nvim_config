@@ -186,12 +186,6 @@ require("lazy").setup({
         },
     },
 
-    {
-        "MeanderingProgrammer/render-markdown.nvim",
-        dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
-        opts = {},
-    },
-
     -- COLORSCHEMES
     { "cormacrelf/dark-notify" },
     { "catppuccin/nvim",       name = "catppuccin" },
