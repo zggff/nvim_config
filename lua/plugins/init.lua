@@ -12,10 +12,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local require_local = function(name)
-    local status_ok, _ = pcall(require, name)
-    if not status_ok then
-        vim.notify("plugin config " .. name .. " not found")
-    end
+    require(name)
+    -- local status_ok, _ = pcall(require, name)
+    -- if not status_ok then
+    --     vim.notify("plugin config " .. name .. " not found")
+    -- end
 end
 
 require("lazy").setup({
@@ -23,11 +24,6 @@ require("lazy").setup({
     -- DEPENDENCIES
     { "nvim-tree/nvim-web-devicons" },
     { "nvim-lua/plenary.nvim" },
-    {
-        "vhyrro/luarocks.nvim",
-        priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
-        config = true,
-    },
 
     -- USEFUL STUFF
     {
@@ -67,17 +63,13 @@ require("lazy").setup({
             require_local("plugins.project")
         end,
     },
-    -- {
-    -- 	"akinsho/toggleterm.nvim",
-    -- 	config = function()
-    -- 		require_local("plugins.toggleterm")
-    -- 	end,
-    -- }, -- terminal
     {
-        "nvim-treesitter/nvim-treesitter",
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate',
         config = function()
             require_local("plugins.treesitter")
         end,
+
     },
     {
         "numToStr/Comment.nvim",
@@ -145,6 +137,9 @@ require("lazy").setup({
             "stevearc/dressing.nvim", -- optional for vim.ui.select
             "nvim-lua/plenary.nvim",
             "nvim-flutter/flutter-tools.nvim",
+            "glepnir/lspsaga.nvim",
+            "onsails/lspkind.nvim",
+
         },
     },
     {
@@ -156,8 +151,8 @@ require("lazy").setup({
         "SUSTech-data/neopyter",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter", -- neopyter don't depend on `nvim-treesitter`, but does depend on treesitter parser of python
-            "AbaoFromCUG/websocket.nvim",      -- for mode='direct'
+            -- "nvim-treesitter/nvim-treesitter", -- neopyter don't depend on `nvim-treesitter`, but does depend on treesitter parser of python
+            "AbaoFromCUG/websocket.nvim", -- for mode='direct'
         },
         opts = {
             parser = {
@@ -168,22 +163,10 @@ require("lazy").setup({
             file_pattern = { "*.ju.*" },
         },
     },
-    -- CMP
     {
-        "hrsh7th/nvim-cmp",
-        config = function()
-            require_local("plugins.cmp")
-        end,
-        dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
-            -- "L3MON4D3/LuaSnip",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-cmdline",
-            "rafamadriz/friendly-snippets",
-            "glepnir/lspsaga.nvim",
-            "onsails/lspkind.nvim",
-        },
+        'MeanderingProgrammer/render-markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you use the mini.nvim suite
+        opts = {},
     },
 
     -- COLORSCHEMES

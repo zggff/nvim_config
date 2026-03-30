@@ -1,6 +1,7 @@
 -- Hint: use `:h <option>` to figure out the meaning if needed
 vim.opt.clipboard = 'unnamedplus'   -- use system clipboard 
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+vim.opt.completeopt = {'menu', 'menuone', 'noselect', 'popup'}
+-- vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 vim.opt.mouse = 'a'                 -- allow the mouse to be used in Nvim
 
 -- Tab
@@ -28,3 +29,7 @@ vim.opt.smartcase = true            -- but make it case sensitive if an uppercas
 vim.opt.signcolumn = 'yes:1'
 
 vim.cmd('let g:c_syntax_for_h = 1')
+vim.cmd([[
+inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+]])

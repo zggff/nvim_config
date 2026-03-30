@@ -1,16 +1,12 @@
-local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local saga = require("lspsaga")
 local null_ls = require("null-ls")
+
+local lspkind = require('lspkind')
+lspkind.setup()
 
 null_ls.setup({
     sources = {
         null_ls.builtins.formatting.yapf,
-        -- null_ls.builtins.formatting.ruff,
-        -- require("none-ls.diagnostics.flake8"),
-        -- 		require("none-ls.formatting.ruff"),
-        -- null_ls.builtins.diagnostics.mypy
-        -- null_ls.builtins.diagnostics.pylint
-        -- null_ls.extras.diagnostics.flake8
     },
 })
 
@@ -40,7 +36,7 @@ vim.diagnostic.config({
     severity_sort = true,
 })
 
-local on_attach = function(_, _)
+local on_attach = function(client, bufnr)
     local opts = { noremap = true, silent = true }
     vim.keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts)           -- show definition, references
     vim.keymap.set("n", "gD", "<cmd>Lspsaga goto_definition<CR>", opts)      -- got to declaration
@@ -48,16 +44,23 @@ local on_attach = function(_, _)
     vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
     vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
     vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)             -- show documentation for what is under cursor
+    vim.keymap.set("i", "<C-space>", vim.lsp.completion.get, opts)             -- show documentation for what is under cursor
+    vim.lsp.completion.enable(true, client.id, bufnr, {
+		autotrigger = true,
+		convert = function(item)
+          return { abbr = item.label:gsub("%b()", "") }
+		end,
+      })
 end
 
-local capabilities = cmp_nvim_lsp.default_capabilities()
 
-vim.lsp.enable("clangd")
-vim.lsp.enable("sourcekit")
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("gopls")
-vim.lsp.enable("jedi_language_server")
-vim.lsp.enable("rust_analyzer")
+local lsps = { "clangd", "sourcekit", "lua_ls", "gopls", "jedi_language_server", "rust_analyzer", "sourcekit" }
+for _, name in ipairs(lsps) do
+    vim.lsp.enable(name)
+    vim.lsp.config(name, {
+        on_attach = on_attach,
+    })
+end
 
 vim.lsp.config("sourcekit", {
     filetypes = { "swift" },
@@ -73,17 +76,6 @@ vim.lsp.config("gopls", {
             gofumpt = true,
         },
     },
-})
-
-vim.lsp.config("*", {
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
-
-vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(_)
-        on_attach()
-    end,
 })
 
 local function format()
