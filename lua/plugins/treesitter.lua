@@ -1,10 +1,11 @@
-local treesitters = { "rust", "swift", "c", "cpp", "markdown", "markdown_inline", "python", "lua" }
+local treesitter = require("nvim-treesitter")
+local installed = treesitter.get_installed()
 
-require("nvim-treesitter").install(treesitters)
-
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = treesitters,
-    callback = function()
-        vim.treesitter.start()
-    end,
-})
+if next(installed) ~= nil then
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = installed,
+        callback = function()
+            vim.treesitter.start()
+        end,
+    })
+end
