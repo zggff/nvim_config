@@ -12,11 +12,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local require_local = function(name)
-    require(name)
-    -- local status_ok, _ = pcall(require, name)
-    -- if not status_ok then
-    --     vim.notify("plugin config " .. name .. " not found")
-    -- end
+    -- require(name)
+    local status_ok, _ = pcall(require, name)
+    if not status_ok then
+        vim.notify("plugin config " .. name .. " not found")
+    end
 end
 
 require("lazy").setup({
@@ -37,18 +37,6 @@ require("lazy").setup({
         event = "VeryLazy",
         config = function()
             require_local("plugins.which-key")
-        end,
-    },
-    {
-        "nvim-lualine/lualine.nvim",
-        config = function()
-            require('lualine').setup({})
-        end,
-    },
-    {
-        "akinsho/bufferline.nvim",
-        config = function()
-            require_local("plugins.bufferline")
         end,
     },
     {
@@ -151,7 +139,6 @@ require("lazy").setup({
         "SUSTech-data/neopyter",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            -- "nvim-treesitter/nvim-treesitter", -- neopyter don't depend on `nvim-treesitter`, but does depend on treesitter parser of python
             "AbaoFromCUG/websocket.nvim", -- for mode='direct'
         },
         opts = {

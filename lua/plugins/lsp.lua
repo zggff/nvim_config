@@ -52,7 +52,7 @@ local on_attach_default = function(client, bufnr)
 end
 
 
-local lsps = { "clangd", "sourcekit", "lua_ls", "gopls", "jedi_language_server", "rust_analyzer", "sourcekit" }
+local lsps = { "clangd", "sourcekit", "lua_ls", "gopls", "rust_analyzer", "pyrefly" }
 for _, name in ipairs(lsps) do
     vim.lsp.enable(name)
     vim.lsp.config(name, {
@@ -96,6 +96,7 @@ vim.lsp.config("gopls", {
         },
     },
 })
+
 
 local function format()
     vim.lsp.buf.format({ async = false, timeout_ms = 10000 })

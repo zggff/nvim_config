@@ -11,8 +11,6 @@ which_key.add({
 	{ "<leader>F", "<cmd>Telescope live_grep<cr>", desc = "Find Text" },
 	{ "<leader>b", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
 	{ "<leader>c", "<cmd>bdelete!<CR>", desc = "Close Buffer" },
-	{ "<leader>1", "<cmd>BufferLineCyclePrev<CR>", desc = "Next buffer" },
-	{ "<leader>2", "<cmd>BufferLineCycleNext<CR>", desc = "Previous buffer" },
 
 	{ "<leader>l", group = "LSP" },
 	{ "<leader>ll", "<cmd>Lspsaga code_action<CR>", desc = "Code actions" },
