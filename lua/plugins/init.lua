@@ -60,12 +60,6 @@ require("lazy").setup({
 
     },
     {
-        "numToStr/Comment.nvim",
-        config = function()
-            require('Comment').setup()
-        end,
-    },
-    {
         "folke/todo-comments.nvim",
         config = function()
             require("todo-comments").setup()
@@ -73,20 +67,18 @@ require("lazy").setup({
     },
 
     -- GIT
-    {
-        "lewis6991/gitsigns.nvim",
-        config = function()
-            require('gitsigns').setup({})
-        end,
-    },
+    -- {
+    --     "lewis6991/gitsigns.nvim",
+    --     config = function()
+    --         require('gitsigns').setup({})
+    --     end,
+    -- },
     {
         "NeogitOrg/neogit",
         config = function()
             require_local("plugins.neogit")
         end,
     },
-    { "sindrets/diffview.nvim" },
-
     -- TELESCOPE
     {
         "nvim-telescope/telescope.nvim",
