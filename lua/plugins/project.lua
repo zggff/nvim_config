@@ -1,12 +1,17 @@
-require("project_nvim").setup({
-    active = true,
-    detection_methods = { "pattern" },
-    patterns = { "justfile", ".git" },
-})
+return {
+    "ahmedkhalf/project.nvim",
+    config = function()
+        require("project_nvim").setup({
+            active = true,
+            detection_methods = { "pattern" },
+            patterns = { "justfile", ".git" },
+        })
 
-local status, telescope = pcall(require, "telescope")
-if not status then
-    return
-end
+        local status, telescope = pcall(require, "telescope")
+        if not status then
+            return
+        end
 
-telescope.load_extension("projects")
+        telescope.load_extension("projects")
+    end,
+}

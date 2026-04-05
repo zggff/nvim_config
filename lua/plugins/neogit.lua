@@ -1,4 +1,7 @@
-require('neogit').setup({
-    -- kind = 'split',
-    -- disable_hint = true,
-})
+return {
+    "NeogitOrg/neogit",
+    config = function()
+        require('neogit').setup({
+        })
+    end,
+}

@@ -1,4 +1,5 @@
-require('options')
-require('keymaps')
-require('plugins')
-require('colorschemes')
+require('config.options')
+require('config.keymaps')
+require('config.statusline')
+
+require('config.lazy')

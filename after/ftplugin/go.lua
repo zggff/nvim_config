@@ -1,5 +1,5 @@
-local util = require("util")
-local term = require("terminal")
+local util = require("misc.util")
+local term = require("misc.terminal")
 
 local function run()
     local path = vim.api.nvim_buf_get_name(0)
