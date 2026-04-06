@@ -28,7 +28,7 @@ local on_attach_default = function(client, bufnr)
 end
 
 
-local lsps = { "clangd", "sourcekit", "lua_ls", "gopls", "rust_analyzer", "pyrefly" }
+local lsps = { "clangd", "sourcekit", "lua_ls", "gopls", "rust_analyzer", "pyrefly", "filepaths_ls", "sqls" }
 for _, name in ipairs(lsps) do
     vim.lsp.enable(name)
     vim.lsp.config(name, {

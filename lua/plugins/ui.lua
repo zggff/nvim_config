@@ -1,8 +1,5 @@
 return {
     {
-        "folke/todo-comments.nvim",
-    },
-    {
         "nvim-telescope/telescope.nvim",
         config = function()
             local telescope = require("telescope")
@@ -19,9 +16,15 @@ return {
         },
     },
     {
+        "folke/todo-comments.nvim",
+    },
+    {
         "folke/snacks.nvim",
         opts = {
             image = {}
         }
+    },
+    {
+        "OXY2DEV/markview.nvim"
     }
 }

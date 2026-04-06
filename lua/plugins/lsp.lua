@@ -1,5 +1,9 @@
 return {
     {
+        "antonk52/filepaths_ls.nvim",
+        config = function() end
+    },
+    {
         "folke/lazydev.nvim",
         ft = "lua",
         opts = {
