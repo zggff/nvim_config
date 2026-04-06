@@ -17,4 +17,11 @@ return {
             "nvim-telescope/telescope-ui-select.nvim",
             "nvim-telescope/telescope-media-files.nvim",
         },
-    } }
+    },
+    {
+        "folke/snacks.nvim",
+        opts = {
+            image = {}
+        }
+    }
+}

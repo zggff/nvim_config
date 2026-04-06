@@ -80,6 +80,10 @@
       "rev": "687de727de91a63b0bff9cff4e71d73f9d40fa77",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
+    "snacks": {
+      "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
+      "src": "https://github.com/folke/snacks.nvim"
+    },
     "telescope": {
       "rev": "cfb85dcf7f822b79224e9e6aef9e8c794211b20b",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
