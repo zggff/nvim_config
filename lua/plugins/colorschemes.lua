@@ -2,26 +2,21 @@ return {
     {
         "catppuccin/nvim",
         name = "catppuccin",
-        config = function()
-            require("catppuccin").setup({
-                background = { -- :h background
-                    light = "latte",
-                    dark = "mocha",
-                },
-                term_colors = false,
-                dim_inactive = {
-                    enabled = false
-                }
-            })
-        end
+        opts = {
+            background = {     -- :h background
+                light = "latte",
+                dark = "mocha",
+            },
+            term_colors = false,
+            dim_inactive = {
+                enabled = false
+            }
+        }
     },
-    { "rose-pine/neovim", name = "rose-pine" },
-
+    -- { "rose-pine/neovim", name = "rose-pine" },
     {
         "cormacrelf/dark-notify",
         config = function()
-            vim.g.dark_theme = "rose-pine"
-
             vim.g.dark_theme = "catppuccin"
             vim.g.light_theme = "catppuccin"
 
