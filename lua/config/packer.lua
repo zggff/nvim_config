@@ -62,7 +62,7 @@ local function add_to_packer(opts)
             vim.pack.add(vals)
             config_func()
 
-            pcall(vim.cmd, opts.cmd)
+            vim.cmd(opts.cmd)
         end, { desc = "Initialize " .. vals[1].name })
     else
         table.insert(plugin_info.configs, config_func)
