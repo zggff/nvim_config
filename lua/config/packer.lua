@@ -3,8 +3,6 @@ local plugin_info = {
     configs = {}
 }
 
-local plugin_dir = vim.fn.stdpath("config") .. "/lua/plugins"
-local fs, fs_read_err = vim.uv.fs_scandir(plugin_dir)
 
 local function gf(s)
     return "https://github.com/" .. s
@@ -74,6 +72,8 @@ local function add_to_packer(opts)
     end
 end
 
+local plugin_dir = vim.fn.stdpath("config") .. "/lua/plugins"
+local fs, fs_read_err = vim.uv.fs_scandir(plugin_dir)
 
 if fs then
     while true do
