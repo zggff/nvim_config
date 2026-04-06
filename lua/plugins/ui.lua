@@ -21,10 +21,22 @@ return {
     {
         "folke/snacks.nvim",
         opts = {
-            image = {}
+            image = {
+                math = {
+                    enabled = false
+                }
+            }
         }
     },
     {
-        "OXY2DEV/markview.nvim"
-    }
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+            code = { border = 'thick' },
+            latex = {
+                render_modes = true,
+                position = 'below',
+            },
+        }
+    },
+
 }
