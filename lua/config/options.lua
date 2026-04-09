@@ -32,4 +32,7 @@ vim.cmd('let g:c_syntax_for_h = 1')
 vim.cmd([[
 inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <silent><expr> <Tab>   pumvisible() ? "\<Down>" : "\<Tab>"
+"inoremap <silent><expr> <S-Tab> pumvisible() ? "\<Up>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? '<c-y>' : '<cr>'
 ]])

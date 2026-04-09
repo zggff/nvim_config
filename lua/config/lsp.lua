@@ -2,8 +2,29 @@ require('lspkind').setup({
     mode = "symbol"
 })
 
+local winid = nil
+
+local function on_jump(diagnostic, bufnr)
+    if not diagnostic then return end
+    if winid and vim.api.nvim_win_is_valid(winid) then
+        vim.api.nvim_win_close(winid, true)
+    end
+    _, winid = vim.diagnostic.open_float({
+        bufnr = bufnr,
+        diagnostic = diagnostic,
+        scope = "cursor"
+    })
+end
+
 vim.diagnostic.config({
-    virtual_text = true,
+    virtual_text = {
+        severity = {
+            min = vim.diagnostic.severity.WARN
+        }
+    },
+    -- virtual_lines = {
+    --     current_line = true
+    -- },
     signs = {
         text = {
             [vim.diagnostic.severity.ERROR] = " ",
@@ -15,6 +36,7 @@ vim.diagnostic.config({
     underline = false,
     update_in_insert = true,
     severity_sort = true,
+    jump = { on_jump = on_jump }
 })
 
 local on_attach_default = function(client, bufnr)
@@ -28,50 +50,38 @@ local on_attach_default = function(client, bufnr)
 end
 
 
-local lsps = { "clangd", "sourcekit", "lua_ls", "gopls", "rust_analyzer", "pyrefly", "filepaths_ls", "sqls" }
-for _, name in ipairs(lsps) do
-    vim.lsp.enable(name)
-    vim.lsp.config(name, {
-        on_attach = on_attach_default,
-    })
-end
-
-vim.lsp.config("sourcekit", {
-    filetypes = { "swift" },
-})
-
-vim.lsp.config("rust_analyzer", {
-    on_attach = function(client, bufnr)
-        vim.lsp.completion.enable(true, client.id, bufnr, {
-            autotrigger = true,
-            convert = function(item)
-                local abbr = item.label:gsub("%b()", "") -- remove parentheses
-                local info = string.format("```rust\n%s\n```", item.detail)
-                if item.documentation ~= nil then
-                    info = info .. "\n\n" .. item.documentation.value
-                end
-                return {
-                    abbr = abbr,
-                    menu = "",
-                    info = info,
-                }
-            end,
-        })
-        on_attach_default(client, bufnr)
-    end
-})
-
-vim.lsp.config("gopls", {
-    settings = {
-        gopls = {
-            analyses = {
-                unusedparams = true,
+local lsps = {
+    clangd = {},
+    sourcekit = {
+        filetypes = { "swift" }
+    },
+    lua_ls = {},
+    gopls = {
+        settings = {
+            gopls = {
+                analyses = {
+                    unusedparams = true,
+                },
+                staticcheck = true,
+                gofumpt = true,
             },
-            staticcheck = true,
-            gofumpt = true,
         },
     },
-})
+    filepaths_ls = {},
+    rust_analyzer = {},
+    pyrefly = {},
+    sqls = {},
+    cssls = {},
+    html = {}
+}
+
+for name, config in pairs(lsps) do
+    if config.on_attach == nil then
+        config.on_attach = on_attach_default
+    end
+    vim.lsp.enable(name, true)
+    vim.lsp.config(name, config)
+end
 
 
 local function format()
