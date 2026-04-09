@@ -72,7 +72,8 @@ local lsps = {
     pyrefly = {},
     sqls = {},
     cssls = {},
-    html = {}
+    html = {},
+    tombi = {}
 }
 
 for name, config in pairs(lsps) do
