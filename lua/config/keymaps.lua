@@ -1,7 +1,7 @@
 -- define common options
 local opts = {
-    noremap = true,      -- non-recursive
-    silent = true,       -- do not show message
+    noremap = true, -- non-recursive
+    silent = true,  -- do not show message
 }
 local keymap = vim.keymap.set
 
@@ -14,6 +14,8 @@ vim.g.maplocalleader = " "
 -----------------
 -- Normal mode --
 -----------------
+vim.keymap.set('n', "<leader>w", "<cmd>w!<CR>", { desc = "Save" })
+vim.keymap.set('n', "<leader>q", "<cmd>q<CR>", { desc = "Quit" })
 
 -----------------
 -- Visual mode --

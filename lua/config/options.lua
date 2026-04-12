@@ -27,6 +27,7 @@ vim.opt.ignorecase = true -- ignore case in searches by default
 vim.opt.smartcase = true  -- but make it case sensitive if an uppercase is entered
 
 vim.opt.signcolumn = 'yes:1'
+vim.g.python3_host_prog = '/Users/maxgiga/.local/bin/pynvim-python'
 
 vim.cmd('let g:c_syntax_for_h = 1')
 vim.cmd([[

@@ -32,14 +32,5 @@ end
 vim.api.nvim_buf_create_user_command(0, "Run", run, {})
 vim.api.nvim_buf_create_user_command(0, "Test", test, {})
 
-local ok, which_key = pcall(require, "which-key")
-if not ok then
-    return
-end
-if not which_key.did_setup then
-    return
-end
-which_key.add({
-    { "<leader>l;", run, desc = "run buffer in terminal" },
-    { "<leader>l,", test, desc = "test buffer in terminal" },
-})
+vim.keymap.set('n', "<leader>l;", run, {desc = "run buffer in terminal" })
+vim.keymap.set('n', "<leader>l,", test, {desc = "test buffer in terminal" })

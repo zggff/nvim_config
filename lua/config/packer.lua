@@ -1,7 +1,7 @@
 local plugin_info = {
-    plugins = {},
+    startup_plugins = {},
     configs = {},
-    lazy_configs = {}
+    keymaps = {}
 }
 
 local function gf(s)
@@ -15,13 +15,13 @@ end
 local function add_to_packer(opts)
     local vals = { {
         src = gf(opts[1]),
-        name = opts.name ~= nil and opts.name or opts[1]
+        name = opts.name or opts[1]
     } }
 
     if opts.dependencies ~= nil then
         for _, name in ipairs(opts.dependencies) do
             local path = gf(name)
-            for _, ex in ipairs(plugin_info.plugins) do
+            for _, ex in ipairs(plugin_info.startup_plugins) do
                 if path == ex.src then
                     goto exists
                 end
@@ -38,23 +38,29 @@ local function add_to_packer(opts)
         return
     end
 
-    local config_func = opts.config
-    if config_func == nil then
-        local require_name
-        if opts.require_name ~= nil then
-            require_name = opts.require_name
-        elseif opts.name ~= nil then
-            require_name = opts.name
-        else
-            require_name = normalize(opts[1])
+    local require_name = opts.require_name or opts.name or normalize(opts[1])
+    local config_func = function()
+        if opts.lazy or opts.ft or opts.cmd then
+            vim.pack.add(vals)
         end
 
-        config_func = function()
-            local ok, res = pcall(require, require_name)
-            if not ok then
-                error(res)
+        if opts.keys then
+            for _, key in ipairs(opts.keys) do
+                vim.keymap.set('n', key[1], key[2], {
+                    desc = key.desc,
+                    silent = true
+                })
             end
-            res.setup(opts.opts)
+        end
+
+        if opts.init then
+            opts.init()
+        end
+
+        if opts.config then
+            opts.config()
+        else
+            require(require_name).setup(opts.opts)
         end
     end
 
@@ -62,26 +68,27 @@ local function add_to_packer(opts)
         vim.api.nvim_create_autocmd('FileType', {
             pattern = opts.ft,
             callback = function()
-                vim.pack.add(vals)
+                -- vim.pack.add(vals)
                 config_func()
             end
         })
     elseif opts.cmd ~= nil then
         vim.api.nvim_create_user_command(opts.cmd, function()
             vim.api.nvim_del_user_command(opts.cmd)
-            vim.pack.add(vals)
+            -- vim.pack.add(vals)
             config_func()
 
             vim.cmd(opts.cmd)
         end, { desc = "Initialize " .. vals[1].name })
     else
-        if opts.lazy ~= nil and opts.lazy then
+        if opts.lazy then
             config_func = vim.schedule_wrap(config_func)
+        else
+            for _, val in ipairs(vals) do
+                table.insert(plugin_info.startup_plugins, val)
+            end
         end
         table.insert(plugin_info.configs, config_func)
-        for _, val in ipairs(vals) do
-            table.insert(plugin_info.plugins, val)
-        end
     end
 end
 
@@ -111,7 +118,14 @@ else
     vim.notify("Could not read plugins directory: " .. tostring(fs_read_err), vim.log.levels.WARN)
 end
 
-vim.pack.add(plugin_info.plugins)
+vim.pack.add(plugin_info.startup_plugins)
+
+local function time_it(fn)
+    local start = vim.loop.hrtime()
+    fn()
+    local elapsed = (vim.loop.hrtime() - start) / 1e6
+    print(string.format("Took %.3f ms", elapsed))
+end
 
 for _, config in ipairs(plugin_info.configs) do
     local res, err = pcall(config)
@@ -120,18 +134,11 @@ for _, config in ipairs(plugin_info.configs) do
     end
 end
 
--- for _, config in ipairs(plugin_info.configs) do
---     local res, err = pcall(config)
---     if not res then
---         vim.notify("Could not config plugin: " .. tostring(err), vim.log.levels.ERROR)
---     end
--- end
 
-
-vim.api.nvim_create_user_command("PackUpdate", function()
-    vim.pack.update()
-end, { desc = "Update all packages" })
-
-vim.api.nvim_create_user_command("PackList", function()
-    vim.pack.update(nil, { offline = true })
-end, { desc = "Update all packages" })
+-- vim.api.nvim_create_user_command("PackUpdate", function()
+--     vim.pack.update()
+-- end, { desc = "Update all packages" })
+--
+-- vim.api.nvim_create_user_command("PackList", function()
+--     vim.pack.update(nil, { offline = true })
+-- end, { desc = "Update all packages" })

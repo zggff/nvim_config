@@ -32,10 +32,6 @@
       "rev": "031f04449ee153cbdfff4681e8b8545833d9f7d8",
       "src": "https://github.com/SUSTech-data/neopyter"
     },
-    "neovim": {
-      "rev": "9504524e5ed0e326534698f637f9d038ba4cd0ee",
-      "src": "https://github.com/rose-pine/neovim"
-    },
     "nvim-dap": {
       "rev": "45a69eba683a2c448dd9ecfc4de89511f0646b5f",
       "src": "https://github.com/mfussenegger/nvim-dap"
@@ -107,10 +103,6 @@
     "websocket": {
       "rev": "8a096d51c957557f939e296c4937f27d5dc596d5",
       "src": "https://github.com/AbaoFromCUG/websocket.nvim"
-    },
-    "which-key.nvim": {
-      "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
-      "src": "https://github.com/folke/which-key.nvim"
     }
   }
 }

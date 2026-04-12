@@ -26,10 +26,20 @@ return {
             "nvim-telescope/telescope-media-files.nvim",
             "folke/todo-comments.nvim"
         },
+        keys = {
+            { "<leader>f",  "<cmd>Telescope find_files<cr>",            desc = "Find files" },
+            { "<leader>t",  "<cmd>Telescope<cr>",                       desc = "Find files" },
+            { "<leader>F",  "<cmd>Telescope live_grep<cr>",             desc = "Find Text" },
+            { "<leader>b",  "<cmd>Telescope buffers<cr>",               desc = "Buffers" },
+            { "<leader>ld", "<cmd>Telescope diagnostics<CR>",           desc = "diagnostics" },
+            { "<leader>ls", "<cmd>Telescope lsp_document_symbols<CR>",  desc = "document symbols" },
+            { "<leader>lS", "<cmd>Telescope lsp_workspace_symbols<CR>", desc = "workspace symbols" },
+        },
         lazy = true,
     },
     {
         "folke/snacks.nvim",
+        lazy = true,
         opts = {
             image = {
                 math = {
