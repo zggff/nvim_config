@@ -6,7 +6,7 @@ local M = {
 
 dap.adapters.lldb = {
     type = 'executable',
-    command = '/usr/bin/lldb-vscode', -- adjust as needed, must be absolute path
+    command = '/opt/homebrew/opt/llvm/bin/lldb-dap', -- adjust as needed, must be absolute path
     name = 'lldb'
 }
 
@@ -16,7 +16,7 @@ dap.configurations.cpp = {
         type = 'lldb',
         request = 'launch',
         program = function()
-            if M.path == nil then
+            if not M.path or vim.fn.executable(M.path) == 0 then
                 M.path = vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
             end
             return M.path
@@ -29,7 +29,7 @@ dap.configurations.cpp = {
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
 
-dap.configurations.rust.initCommands = function()
+dap.configurations.rust[1].initCommands = function()
     local rustc_sysroot = vim.fn.trim(vim.fn.system 'rustc --print sysroot')
     assert(
         vim.v.shell_error == 0,
