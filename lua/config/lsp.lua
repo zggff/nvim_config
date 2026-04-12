@@ -68,12 +68,30 @@ local lsps = {
         },
     },
     filepaths_ls = {},
-    rust_analyzer = {},
+    rust_analyzer = {
+        settings = {
+            ['rust-analyzer'] = {
+                check = {
+                    command = "clippy",
+                },
+            }
+        }
+    },
     pyrefly = {},
     sqls = {},
     cssls = {},
     html = {},
-    tombi = {}
+    tombi = {},
+    efm = {
+        init_options = { documentFormatting = true },
+        settings = {
+            languages = {
+                python = {
+                    { formatCommand = "yapf", formatStdin = true }
+                }
+            }
+        }
+    }
 }
 
 for name, config in pairs(lsps) do

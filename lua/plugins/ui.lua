@@ -5,18 +5,28 @@ return {
             local telescope = require("telescope")
 
             telescope.load_extension("lsp_handlers")
-            telescope.load_extension("ui-select")
             telescope.load_extension('media_files')
+
+            telescope.setup({
+                pickers = {
+                    buffers = {
+                        mappings = {
+                            i = {
+                                ["<c-d>"] = "delete_buffer",
+                            }
+                        }
+                    }
+                },
+            })
         end,
         dependencies = {
             "nvim-lua/plenary.nvim",
             "gbrlsnchs/telescope-lsp-handlers.nvim",
             "nvim-telescope/telescope-ui-select.nvim",
             "nvim-telescope/telescope-media-files.nvim",
+            "folke/todo-comments.nvim"
         },
-    },
-    {
-        "folke/todo-comments.nvim",
+        lazy = true,
     },
     {
         "folke/snacks.nvim",
@@ -30,6 +40,7 @@ return {
     },
     {
         "MeanderingProgrammer/render-markdown.nvim",
+        lazy = true,
         opts = {
             code = { border = 'thick' },
             latex = {

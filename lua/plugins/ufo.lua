@@ -35,10 +35,10 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
 
 return {
     "kevinhwang91/nvim-ufo",
+    require_name = "ufo",
     dependencies = { "kevinhwang91/promise-async" },
-    config = function()
-        require("ufo").setup({
-            fold_virt_text_handler = handler,
-        })
-    end
+    opts = {
+        fold_virt_text_handler = handler,
+    },
+    lazy = true
 }

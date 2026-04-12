@@ -1,9 +1,5 @@
 return {
     {
-        "antonk52/filepaths_ls.nvim",
-        config = function() end
-    },
-    {
         "folke/lazydev.nvim",
         ft = "lua",
         opts = {
@@ -13,23 +9,9 @@ return {
         },
     },
     {
-        "nvimtools/none-ls.nvim",
-        ft = "python",
-        dependencies = {
-            "nvimtools/none-ls-extras.nvim",
-        },
-        config = function()
-            local null_ls = require("null-ls")
-            null_ls.setup({
-                sources = {
-                    null_ls.builtins.formatting.yapf,
-                },
-            })
-        end
-    },
-    {
         "nvim-flutter/flutter-tools.nvim",
-        cmd = "Flutter"
+        cmd = "Flutter",
+        opts = {}
     },
     {
         "neovim/nvim-lspconfig",
@@ -38,6 +20,7 @@ return {
         end,
         dependencies = {
             "onsails/lspkind.nvim",
+            "antonk52/filepaths_ls.nvim"
         },
     }
 }

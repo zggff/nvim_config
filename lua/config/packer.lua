@@ -1,8 +1,8 @@
 local plugin_info = {
     plugins = {},
-    configs = {}
+    configs = {},
+    lazy_configs = {}
 }
-
 
 local function gf(s)
     return "https://github.com/" .. s
@@ -15,11 +15,8 @@ end
 local function add_to_packer(opts)
     local vals = { {
         src = gf(opts[1]),
-        name = normalize(opts[1])
+        name = opts.name ~= nil and opts.name or opts[1]
     } }
-    if opts.name ~= nil then
-        vals[1].name = opts.name
-    end
 
     if opts.dependencies ~= nil then
         for _, name in ipairs(opts.dependencies) do
@@ -37,10 +34,23 @@ local function add_to_packer(opts)
         end
     end
 
+    if opts.config == nil and opts.opts == nil then
+        return
+    end
+
     local config_func = opts.config
     if config_func == nil then
+        local require_name
+        if opts.require_name ~= nil then
+            require_name = opts.require_name
+        elseif opts.name ~= nil then
+            require_name = opts.name
+        else
+            require_name = normalize(opts[1])
+        end
+
         config_func = function()
-            local ok, res = pcall(require, vals[1].name)
+            local ok, res = pcall(require, require_name)
             if not ok then
                 error(res)
             end
@@ -65,6 +75,9 @@ local function add_to_packer(opts)
             vim.cmd(opts.cmd)
         end, { desc = "Initialize " .. vals[1].name })
     else
+        if opts.lazy ~= nil and opts.lazy then
+            config_func = vim.schedule_wrap(config_func)
+        end
         table.insert(plugin_info.configs, config_func)
         for _, val in ipairs(vals) do
             table.insert(plugin_info.plugins, val)
@@ -106,6 +119,13 @@ for _, config in ipairs(plugin_info.configs) do
         vim.notify("Could not config plugin: " .. tostring(err), vim.log.levels.ERROR)
     end
 end
+
+-- for _, config in ipairs(plugin_info.configs) do
+--     local res, err = pcall(config)
+--     if not res then
+--         vim.notify("Could not config plugin: " .. tostring(err), vim.log.levels.ERROR)
+--     end
+-- end
 
 
 vim.api.nvim_create_user_command("PackUpdate", function()

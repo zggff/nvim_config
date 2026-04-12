@@ -1,10 +1,10 @@
 return {
     "folke/which-key.nvim",
-    event = "VeryLazy",
+    lazy = true,
     config = function()
         local keys = {
             { "<leader>w",  "<cmd>w!<CR>",                              desc = "Save" },
-            { "<leader>e",  "<cmd>NvimTreeToggle<cr>",                  desc = "Explorer" },
+            { "<leader>e",  require("oil").toggle,                      desc = "Explorer" },
             { "<leader>q",  "<cmd>q<CR>",                               desc = "Quit" },
             { "<leader>f",  "<cmd>Telescope find_files<cr>",            desc = "Find files" },
             { "<leader>F",  "<cmd>Telescope live_grep<cr>",             desc = "Find Text" },
