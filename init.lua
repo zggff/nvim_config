@@ -1,6 +1,7 @@
 require('config.options')
 require('config.keymaps')
+require('config.colorschemes')
 require('config.statusline')
 
-require('config.packer')
-require('config.colorschemes')
+local packer = require("misc.packer")
+packer.setup(packer.require_dir("plugins"))

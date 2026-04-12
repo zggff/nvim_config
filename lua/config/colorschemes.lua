@@ -1,3 +1,21 @@
+local packer = require("misc.packer")
+packer.setup({
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        opts = {
+            background = {
+                light = "latte",
+                dark = "mocha",
+            },
+            term_colors = false,
+            dim_inactive = {
+                enabled = false
+            }
+        }
+    }
+})
+
 local function set_colorscheme()
     if vim.o.background == "dark" then
         vim.cmd.colorscheme("catppuccin")

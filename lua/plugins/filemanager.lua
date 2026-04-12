@@ -1,5 +1,9 @@
+local oil_toggled = false
+
 return {
     "stevearc/oil.nvim",
+    ---@module 'oil'
+    ---@type oil.SetupOpts
     opts = {
         default_file_explorer = true
     },
@@ -8,7 +12,16 @@ return {
             "<leader>e",
             function()
                 local oil = require('oil')
-                oil.toggle_float()
+                if oil_toggled then
+                    oil.close()
+                else
+                    oil.open(nil, {
+                        preview = {
+                            vertical = true
+                        }
+                    })
+                end
+                -- oil.toggle_float()
             end,
             desc = "Explorer"
         },

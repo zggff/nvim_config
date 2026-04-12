@@ -1,7 +1,5 @@
--- Hint: use `:h <option>` to figure out the meaning if needed
-vim.opt.clipboard = 'unnamedplus' -- use system clipboard
+vim.opt.clipboard = 'unnamedplus'
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'popup' }
--- vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 vim.opt.mouse = 'a' -- allow the mouse to be used in Nvim
 
 -- Tab
@@ -28,20 +26,4 @@ vim.opt.smartcase = true  -- but make it case sensitive if an uppercase is enter
 
 vim.opt.signcolumn = 'yes:1'
 vim.g.python3_host_prog = '/Users/maxgiga/.local/bin/pynvim-python'
-
-vim.cmd('let g:c_syntax_for_h = 1')
-vim.cmd([[
-inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? '<c-y>' : '<cr>'
-]])
-
-
-vim.keymap.set({ 'i', 's' }, '<Tab>', function()
-    if vim.snippet.active({ direction = 1 }) then
-        return '<Cmd>lua vim.snippet.jump(1)<CR>'
-    elseif vim.fn.pumvisible() ~= 0 then
-        return "<C-n>"
-    else
-        return '<Tab>'
-    end
-end, { desc = '...', expr = true, silent = true })
+vim.g.c_syntax_for_h = 1
