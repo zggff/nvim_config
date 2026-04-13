@@ -13,7 +13,9 @@ return {
             function()
                 local oil = require('oil')
                 if oil_toggled then
-                    oil.close()
+                    oil.close({
+                        exit_if_last_buf = false
+                    })
                 else
                     oil.open(nil, {
                         preview = {
@@ -21,7 +23,7 @@ return {
                         }
                     })
                 end
-                -- oil.toggle_float()
+                oil_toggled = not oil_toggled
             end,
             desc = "Explorer"
         },

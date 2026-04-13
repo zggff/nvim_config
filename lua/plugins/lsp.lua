@@ -17,10 +17,9 @@ return {
         "neovim/nvim-lspconfig",
         lazy = true,
         config = function()
-            require("config/lsp")
+            require("config.lsp")
         end,
         dependencies = {
-            "onsails/lspkind.nvim",
             "antonk52/filepaths_ls.nvim"
         },
         keys = {

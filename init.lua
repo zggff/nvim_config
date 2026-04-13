@@ -1,5 +1,4 @@
-require('config.options')
-require('config.keymaps')
+require('config.general')
 require('config.colorschemes')
 require('config.statusline')
 

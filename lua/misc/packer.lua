@@ -116,6 +116,17 @@ M.list = function()
     vim.pack.update(nil, { offline = true })
 end
 
+M.clear = function()
+    local all_installed = vim.pack.get()
+    local to_clear = {}
+    for _, plug in ipairs(all_installed) do
+        if not L.all_plugins_listed[plug.spec.src] then
+            table.insert(to_clear, plug.spec.name)
+        end
+    end
+    vim.pack.del(to_clear)
+end
+
 ---@class PluginSpec
 ---@field [1] string plugin name
 ---@field opts? table
@@ -183,11 +194,14 @@ end, { desc = "Update all packages" })
 
 vim.api.nvim_create_user_command("PackList", function()
     vim.pack.update(nil, { offline = true })
-end, { desc = "Update all packages" })
+end, { desc = "List all packages" })
 
 vim.api.nvim_create_user_command("PackInstall", function()
     M.install_all()
-end, { desc = "Update all packages" })
+end, { desc = "Install all packages" })
 
+vim.api.nvim_create_user_command("PackClear", function()
+    M.clear()
+end, { desc = "Remove unused packages" })
 
 return M

@@ -1,6 +1,6 @@
-require('lspkind').setup({
-    mode = "symbol"
-})
+
+
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'popup' }
 
 local winid = nil
 
@@ -22,9 +22,6 @@ vim.diagnostic.config({
             min = vim.diagnostic.severity.WARN
         }
     },
-    -- virtual_lines = {
-    --     current_line = true
-    -- },
     signs = {
         text = {
             [vim.diagnostic.severity.ERROR] = " ",
@@ -40,10 +37,7 @@ vim.diagnostic.config({
 })
 
 local on_attach_default = function(client, bufnr)
-    local opts = { noremap = true, silent = true }
-    vim.keymap.set("n", "gd", vim.lsp.buf.declaration, opts)
-    vim.keymap.set("n", "gD", vim.lsp.buf.definition, opts)
-    vim.keymap.set("i", "<C-space>", vim.lsp.completion.get, opts)
+    require("config.lsp.keymaps").set_keymaps()
     vim.lsp.completion.enable(true, client.id, bufnr, {
         autotrigger = true,
     })
@@ -94,12 +88,13 @@ local lsps = {
     }
 }
 
+
 for name, config in pairs(lsps) do
     if config.on_attach == nil then
         config.on_attach = on_attach_default
     end
-    vim.lsp.enable(name, true)
     vim.lsp.config(name, config)
+    vim.lsp.enable(name, true)
 end
 
 
