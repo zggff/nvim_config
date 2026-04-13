@@ -8,19 +8,22 @@ local function gf(s)
 end
 
 local function normalize(name)
-    return name:match(".*/([^.]*)")
+    return name:match(".*/(.+)")
 end
 
 local function packer_use_single(opts, plugins)
-    local vals = { {
-        src = gf(opts[1]),
-        name = opts.name or opts[1]
-    } }
+    local vals = {}
+    if opts[1] then
+        table.insert(vals, {
+            src = gf(opts[1]),
+            name = opts.name or normalize(opts[1])
+        })
+    end
 
     if opts.dependencies ~= nil then
         for _, name in ipairs(opts.dependencies) do
             local path = gf(name)
-            if not plugins.plugins_listed[path] then
+            if not plugins.plugins_listed[name] then
                 table.insert(vals, {
                     src = path,
                     name = normalize(name)
@@ -30,17 +33,20 @@ local function packer_use_single(opts, plugins)
     end
 
     for _, plug in ipairs(vals) do
-        if not L.all_plugins_listed[plug.src] then
-            L.all_plugins_listed[plug.src] = true
+        if not L.all_plugins_listed[plug.name] then
+            L.all_plugins_listed[plug.name] = true
             table.insert(L.all_plugins, plug)
         end
     end
 
     if opts.config == nil and opts.opts == nil then
+        for _, val in ipairs(vals) do
+            plugins.plugins_listed[val.name] = true
+            table.insert(plugins.plugins, val)
+        end
         return
     end
 
-    local require_name = opts.require_name or opts.name or normalize(opts[1])
     local config_func = function()
         if opts.lazy or opts.ft or opts.cmd then
             vim.pack.add(vals)
@@ -62,6 +68,7 @@ local function packer_use_single(opts, plugins)
         if opts.config then
             opts.config()
         else
+            local require_name = opts.require_name or opts.name or opts[1]:match(".*/([^.]*)")
             require(require_name).setup(opts.opts)
         end
     end
@@ -85,7 +92,7 @@ local function packer_use_single(opts, plugins)
             config_func = vim.schedule_wrap(config_func)
         else
             for _, val in ipairs(vals) do
-                plugins.plugins_listed[val.src] = true
+                plugins.plugins_listed[val.name] = true
                 table.insert(plugins.plugins, val)
             end
         end
@@ -94,7 +101,7 @@ local function packer_use_single(opts, plugins)
 end
 
 local function normalize_table(value)
-    if type(value[1]) == "string" then
+    if value[1] and type(value[1]) == "string" then
         return { value }
     else
         return value
@@ -120,7 +127,7 @@ M.clear = function()
     local all_installed = vim.pack.get()
     local to_clear = {}
     for _, plug in ipairs(all_installed) do
-        if not L.all_plugins_listed[plug.spec.src] then
+        if not L.all_plugins_listed[plug.spec.name] then
             table.insert(to_clear, plug.spec.name)
         end
     end
@@ -168,6 +175,9 @@ end
 ---setup plugin/group of plugins
 ---@param spec PluginSpec|PluginSpec[]
 M.setup = function(spec)
+    if not spec then
+        return
+    end
     local plugins = {
         plugins = {},
         plugins_listed = {},

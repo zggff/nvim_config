@@ -29,8 +29,14 @@ M.set_keymaps = function()
         end
     end, opts)
 
+    opts.expr = nil
     vim.keymap.set("n", "gd", vim.lsp.buf.declaration, opts)
     vim.keymap.set("n", "gD", vim.lsp.buf.definition, opts)
     vim.keymap.set("i", "<C-space>", vim.lsp.completion.get, opts)
+
+    vim.keymap.set("n", "<leader>ll", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts)
+    vim.keymap.set("n", "<leader>lf", "<cmd>Format<CR>", opts)
+    vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
 end
 return M

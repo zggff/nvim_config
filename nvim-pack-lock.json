@@ -4,7 +4,7 @@
       "rev": "426dbebe06b5c69fd846ceb17b42e12f890aedf1",
       "src": "https://github.com/catppuccin/nvim"
     },
-    "filepaths_ls": {
+    "filepaths_ls.nvim": {
       "rev": "c5ebc0aa1cb0c7dc4509be834ca54f2c8364c11b",
       "src": "https://github.com/antonk52/filepaths_ls.nvim"
     },
@@ -48,7 +48,7 @@
       "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
       "src": "https://github.com/stevearc/oil.nvim"
     },
-    "plenary": {
+    "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
@@ -64,15 +64,15 @@
       "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
       "src": "https://github.com/folke/snacks.nvim"
     },
-    "telescope-lsp-handlers": {
+    "telescope-lsp-handlers.nvim": {
       "rev": "de02085d6af1633942549a238bc7a5524fa9b201",
       "src": "https://github.com/gbrlsnchs/telescope-lsp-handlers.nvim"
     },
-    "telescope-media-files": {
+    "telescope-media-files.nvim": {
       "rev": "0826c7a730bc4d36068f7c85cf4c5b3fd9fb570a",
       "src": "https://github.com/nvim-telescope/telescope-media-files.nvim"
     },
-    "telescope-ui-select": {
+    "telescope-ui-select.nvim": {
       "rev": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2",
       "src": "https://github.com/nvim-telescope/telescope-ui-select.nvim"
     },
@@ -80,7 +80,7 @@
       "rev": "f7c673b8e46e8f233ff581d3624a517d33a7e264",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
-    "todo-comments": {
+    "todo-comments.nvim": {
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
       "src": "https://github.com/folke/todo-comments.nvim"
     },
@@ -88,7 +88,7 @@
       "rev": "34ba21e9c217c8297b3edb8c97ba4e98b6f6a0a4",
       "src": "https://github.com/romus204/tree-sitter-manager.nvim"
     },
-    "websocket": {
+    "websocket.nvim": {
       "rev": "8a096d51c957557f939e296c4937f27d5dc596d5",
       "src": "https://github.com/AbaoFromCUG/websocket.nvim"
     }
