@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "auto-dark-mode.nvim": {
+      "rev": "54058b4fe414bd64bd2904a6f8a63f1f14e3d8df",
+      "src": "https://github.com/f-person/auto-dark-mode.nvim"
+    },
     "catppuccin": {
       "rev": "426dbebe06b5c69fd846ceb17b42e12f890aedf1",
       "src": "https://github.com/catppuccin/nvim"
@@ -12,6 +16,10 @@
       "rev": "677cc07c16e8b89999108d2ebeefcfc5f539b73c",
       "src": "https://github.com/nvim-flutter/flutter-tools.nvim"
     },
+    "fzf-lua": {
+      "rev": "1e866cce085cc6df3d3e4fb59f00105fa84cef6c",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
     "gitsigns.nvim": {
       "rev": "8d82c240f190fc33723d48c308ccc1ed8baad69d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
@@ -20,6 +28,10 @@
       "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
       "src": "https://github.com/folke/lazydev.nvim"
     },
+    "mini.icons": {
+      "rev": "7fdae2443a0e2910015ca39ad74b50524ee682d3",
+      "src": "https://github.com/nvim-mini/mini.icons"
+    },
     "neogit": {
       "rev": "e06745228600a585b88726fc9fba44a373c15a47",
       "src": "https://github.com/NeogitOrg/neogit"
@@ -27,6 +39,10 @@
     "neopyter": {
       "rev": "031f04449ee153cbdfff4681e8b8545833d9f7d8",
       "src": "https://github.com/SUSTech-data/neopyter"
+    },
+    "notebook_style.nvim": {
+      "rev": "06e76d45654d77a44a2a6ae45b2b9ddb8e40d312",
+      "src": "https://github.com/stellarjmr/notebook_style.nvim"
     },
     "nvim-dap": {
       "rev": "45a69eba683a2c448dd9ecfc4de89511f0646b5f",
@@ -56,33 +72,25 @@
       "rev": "119e8961014c9bfaf1487bf3c2a393d254f337e2",
       "src": "https://github.com/kevinhwang91/promise-async"
     },
+    "pyrepl.nvim": {
+      "rev": "b04a4685d7f054dedcb6863666a6221f95a5b257",
+      "src": "https://github.com/dangooddd/pyrepl.nvim"
+    },
     "render-markdown.nvim": {
       "rev": "0fd43fb4b1f073931c4b481f5f3b7cea3749e190",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+    },
+    "rose-pine": {
+      "rev": "9504524e5ed0e326534698f637f9d038ba4cd0ee",
+      "src": "https://github.com/rose-pine/neovim"
     },
     "snacks.nvim": {
       "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
       "src": "https://github.com/folke/snacks.nvim"
     },
-    "telescope-lsp-handlers.nvim": {
-      "rev": "de02085d6af1633942549a238bc7a5524fa9b201",
-      "src": "https://github.com/gbrlsnchs/telescope-lsp-handlers.nvim"
-    },
-    "telescope-media-files.nvim": {
-      "rev": "0826c7a730bc4d36068f7c85cf4c5b3fd9fb570a",
-      "src": "https://github.com/nvim-telescope/telescope-media-files.nvim"
-    },
-    "telescope-ui-select.nvim": {
-      "rev": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2",
-      "src": "https://github.com/nvim-telescope/telescope-ui-select.nvim"
-    },
-    "telescope.nvim": {
-      "rev": "f7c673b8e46e8f233ff581d3624a517d33a7e264",
-      "src": "https://github.com/nvim-telescope/telescope.nvim"
-    },
-    "todo-comments.nvim": {
-      "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
-      "src": "https://github.com/folke/todo-comments.nvim"
+    "tokyonight.nvim": {
+      "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",
+      "src": "https://github.com/folke/tokyonight.nvim"
     },
     "tree-sitter-manager.nvim": {
       "rev": "34ba21e9c217c8297b3edb8c97ba4e98b6f6a0a4",

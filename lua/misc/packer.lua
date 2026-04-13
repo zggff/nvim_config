@@ -49,7 +49,7 @@ local function packer_use_single(opts, plugins)
 
     local config_func = function()
         if opts.lazy or opts.ft or opts.cmd then
-            vim.pack.add(vals)
+            vim.pack.add(vals, {confirm=false})
         end
 
         if opts.keys then
@@ -112,7 +112,7 @@ local M = {}
 
 ---install all plugins specified using setup
 M.install_all = function()
-    vim.pack.add(L.all_plugins)
+    vim.pack.add(L.all_plugins, {confirm=false})
 end
 
 M.update = function()
@@ -164,6 +164,8 @@ M.require_dir = function(path)
                 for _, val in ipairs(normalize_table(ret)) do
                     table.insert(res, val)
                 end
+            else
+                vim.notify("Could not read plugins from file: " .. name .. "\n: " .. tostring(ret), vim.log.levels.WARN)
             end
         end
     else
@@ -189,7 +191,7 @@ M.setup = function(spec)
         packer_use_single(plugin, plugins)
     end
 
-    vim.pack.add(plugins.plugins)
+    vim.pack.add(plugins.plugins, {confirm = false})
     for _, config in ipairs(plugins.configs) do
         local res, err = pcall(config)
         if not res then

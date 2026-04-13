@@ -3,19 +3,34 @@ return {
         "catppuccin/nvim",
         name = "catppuccin",
         opts = {
-            background = {
-                light = "latte",
-                dark = "mocha",
-            },
+            integrations = {
+                fzf = true
+            }
         }
     },
     {
+        "rose-pine/neovim",
+        name = "rose-pine",
+        opts = {}
+    },
+    {
+        "folke/tokyonight.nvim",
+        opts = {},
+    },
+    {
+        "f-person/auto-dark-mode.nvim",
+        lazy = true,
+        opts = {}
+    },
+    {
         config = function()
+            vim.g.colorscheme_light = "catppuccin"
+            vim.g.colorscheme_dark = "catppuccin"
             local function set_colorscheme()
                 if vim.o.background == "dark" then
-                    vim.cmd.colorscheme("catppuccin-mocha")
+                    vim.cmd.colorscheme(vim.g.colorscheme_dark)
                 else
-                    vim.cmd.colorscheme("catppuccin-latte")
+                    vim.cmd.colorscheme(vim.g.colorscheme_light)
                 end
             end
 
