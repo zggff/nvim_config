@@ -16,7 +16,8 @@ local function packer_use_single(opts, plugins)
     if opts[1] then
         table.insert(vals, {
             src = gf(opts[1]),
-            name = opts.name or normalize(opts[1])
+            name = opts.name or normalize(opts[1]),
+            version = opts.version
         })
     end
 
@@ -49,7 +50,7 @@ local function packer_use_single(opts, plugins)
 
     local config_func = function()
         if opts.lazy or opts.ft or opts.cmd then
-            vim.pack.add(vals, {confirm=false})
+            vim.pack.add(vals, { confirm = false })
         end
 
         if opts.keys then
@@ -85,7 +86,8 @@ local function packer_use_single(opts, plugins)
             vim.api.nvim_del_user_command(opts.cmd)
             config_func()
 
-            vim.cmd(opts.cmd)
+            ---@diagnostic disable-next-line: param-type-mismatch
+            pcall(vim.cmd, opts.cmd)
         end, { desc = "Initialize " .. vals[1].name })
     else
         if opts.lazy then
@@ -112,7 +114,7 @@ local M = {}
 
 ---install all plugins specified using setup
 M.install_all = function()
-    vim.pack.add(L.all_plugins, {confirm=false})
+    vim.pack.add(L.all_plugins, { confirm = false })
 end
 
 M.update = function()
@@ -191,7 +193,7 @@ M.setup = function(spec)
         packer_use_single(plugin, plugins)
     end
 
-    vim.pack.add(plugins.plugins, {confirm = false})
+    vim.pack.add(plugins.plugins, { confirm = false })
     for _, config in ipairs(plugins.configs) do
         local res, err = pcall(config)
         if not res then
