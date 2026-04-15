@@ -17,19 +17,27 @@
       "src": "https://github.com/nvim-flutter/flutter-tools.nvim"
     },
     "fzf-lua": {
-      "rev": "1e866cce085cc6df3d3e4fb59f00105fa84cef6c",
+      "rev": "6048a5b243c9ee0e72cdc09edb44f996c892e005",
       "src": "https://github.com/ibhagwan/fzf-lua"
+    },
+    "ghostty_repl": {
+      "rev": "ccaeb1fcd0de43b176dcbfe65163941700e27ba3",
+      "src": "https://github.com/stellarjmr/ghostty-repl.nvim"
     },
     "gitsigns.nvim": {
       "rev": "8d82c240f190fc33723d48c308ccc1ed8baad69d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
+    "iron.nvim": {
+      "rev": "88cd340407b959f1168af2a6ae5a3d180e6df32c",
+      "src": "https://github.com/Vigemus/iron.nvim"
     },
     "lazydev.nvim": {
       "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
       "src": "https://github.com/folke/lazydev.nvim"
     },
     "mini.icons": {
-      "rev": "7fdae2443a0e2910015ca39ad74b50524ee682d3",
+      "rev": "bac6317300e205335df425296570d84322730067",
       "src": "https://github.com/nvim-mini/mini.icons"
     },
     "neogit": {
@@ -37,23 +45,20 @@
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "neopyter": {
-      "rev": "031f04449ee153cbdfff4681e8b8545833d9f7d8",
-      "src": "https://github.com/SUSTech-data/neopyter"
-    },
-    "notebook_style.nvim": {
-      "rev": "06e76d45654d77a44a2a6ae45b2b9ddb8e40d312",
-      "src": "https://github.com/stellarjmr/notebook_style.nvim"
+      "rev": "2ec8cee0fe8acfb97b3b2d20feb9a6f43d145cc1",
+      "src": "https://github.com/zggff/neopyter",
+      "version": "'fix_parser'"
     },
     "nvim-dap": {
       "rev": "45a69eba683a2c448dd9ecfc4de89511f0646b5f",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-view": {
-      "rev": "e44892210cfa98d23bf22b82b345213d742b9bee",
+      "rev": "1dd4ba2307245ca9517a4b9d99f3bf80830e4397",
       "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-lspconfig": {
-      "rev": "8a9378a822719346a0288fa004dab302ca3c0a8f",
+      "rev": "d10ce09e42bb0ca8600fd610c3bb58676e61208d",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-ufo": {
@@ -73,8 +78,8 @@
       "src": "https://github.com/kevinhwang91/promise-async"
     },
     "pyrepl.nvim": {
-      "rev": "b04a4685d7f054dedcb6863666a6221f95a5b257",
-      "src": "https://github.com/dangooddd/pyrepl.nvim"
+      "rev": "a1bbd31254b24abe53ed1f80b82ce42c696d9748",
+      "src": "https://github.com/zggff/pyrepl.nvim"
     },
     "render-markdown.nvim": {
       "rev": "0fd43fb4b1f073931c4b481f5f3b7cea3749e190",
@@ -93,7 +98,7 @@
       "src": "https://github.com/folke/tokyonight.nvim"
     },
     "tree-sitter-manager.nvim": {
-      "rev": "34ba21e9c217c8297b3edb8c97ba4e98b6f6a0a4",
+      "rev": "fa63bc63ae08b661843d9976a43becfbd3daf76c",
       "src": "https://github.com/romus204/tree-sitter-manager.nvim"
     },
     "websocket.nvim": {

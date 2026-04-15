@@ -1,60 +1,97 @@
 return {
     {
-        "SUSTech-data/neopyter",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "AbaoFromCUG/websocket.nvim", -- for mode='direct'
-        },
+        -- extract, as putting it as dependency causes errors
+        'nvim-lua/plenary.nvim',
+    },
+    {
+        "zggff/neopyter",
+        version = "fix_parser",
         cmd = "Neopyter",
+        dependencies = {
+            'AbaoFromCUG/websocket.nvim', -- for mode='direct'
+        },
+
+        ---@module "neopyter"
+        ---@type neopyter.Option
         opts = {
-            parser = {
-                trim_whitespace = true,
-            },
             mode = "direct",
             remote_address = "127.0.0.1:9001",
             file_pattern = { "*.ju.*" },
         },
         keys = {
-            { "<leader>nn", "<cmd>Neopyter run current<cr>",  desc = "run current" },
+            { "<Cr>",       "<cmd>Neopyter run current<cr>",  desc = "run current" },
             { "<leader>nm", "<cmd>Neopyter run all<cr>",      desc = "run all" },
             { "<leader>nb", "<cmd>Neopyter run allAbove<cr>", desc = "run above" },
         }
+
     },
     {
-        'stellarjmr/notebook_style.nvim',
-        ft = 'python',
+        "zggff/pyrepl.nvim",
+        cmd = "Pyrepl",
+        opts = {
+            cell_pattern = function()
+                if vim.bo.filetype == "markdown" then
+                    return "^```python.*$"
+                end
+                return "^# %%%%$"
+            end,
+            cell_pattern_end = function()
+                if vim.bo.filetype == "markdown" then
+                    return "^```.*$"
+                end
+                return "^# %%%%.*$"
+            end,
+        },
+        keys = {
+            { "<CR>",       "<cmd>Pyrepl sendCell<cr>" },
+            { "<C-CR>",     "<cmd>Pyrepl stepCellForward<cr>" },
+            { "<S-CR>",     "<cmd>Pyrepl stepCellBackward<cr>" },
+            { "<CR>",       "<cmd>Pyrepl sendVisual<cr>",            "v" },
+            { "<leader>nm", "<cmd>Pyrepl sendCellsAll<cr>" },
+            { "<leader>nb", "<cmd>Pyrepl sendCellsBeforeCurrent<cr>" },
+        }
+
+    },
+    {
+        "stellarjmr/ghostty-repl.nvim",
+        cmd = "GhosttyRepl",
+        name = "ghostty_repl",
+        opts = {
+            python_path = "python",
+            keymaps = nil,
+        },
+    },
+    {
+        "Vigemus/iron.nvim",
+        cmd = "Iron",
         config = function()
-            require('notebook_style').setup(
-                {
-                    manual_render = false
-                }
-            )
+            local iron = require("iron.core")
+            local view = require("iron.view")
+
+            iron.setup {
+                config = {
+                    scratch_repl = true,
+                    repl_definition = {
+                        python = {
+                            command = { "ipython", "-i" },
+                            format = require("iron.fts.common").bracketed_paste,
+                            block_dividers = { "# %%" }
+                        },
+                    },
+                    repl_open_cmd = view.split.vertical("40%", {
+                        winfixwidth = false,
+                        winfixheight = false,
+                        number = true
+                    })
+                },
+                highlight = {
+                    italic = true
+                },
+            }
+
+            vim.keymap.set('n', '<CR>', function()
+                iron.send_code_block()
+            end)
         end
-    },
-    {
-        "dangooddd/pyrepl.nvim",
-        opts = {},
-        config = function()
-            local pyrepl = require("pyrepl")
-            pyrepl.setup()
-
-            vim.keymap.set("n", "<leader>jo", pyrepl.open_repl)
-            vim.keymap.set("n", "<leader>jh", pyrepl.hide_repl)
-            vim.keymap.set("n", "<leader>jc", pyrepl.close_repl)
-            vim.keymap.set("n", "<leader>jt", pyrepl.toggle_repl)
-            vim.keymap.set("n", "<leader>ji", pyrepl.open_image_history)
-            vim.keymap.set({ "n", "t" }, "<C-j>", pyrepl.toggle_repl_focus)
-
-            -- send commands
-            vim.keymap.set("n", "<leader>jb", pyrepl.send_buffer)
-            vim.keymap.set("n", "<leader>jl", pyrepl.send_cell)
-            vim.keymap.set("v", "<leader>jv", pyrepl.send_visual)
-
-            -- QoL commands
-            vim.keymap.set("n", "<leader>jp", pyrepl.step_cell_backward)
-            vim.keymap.set("n", "<leader>jn", pyrepl.step_cell_forward)
-            vim.keymap.set("n", "<leader>je", pyrepl.export_to_notebook)
-            vim.keymap.set("n", "<leader>js", ":PyreplInstall")
-        end,
     }
 }

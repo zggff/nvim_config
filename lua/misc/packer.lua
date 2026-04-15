@@ -53,24 +53,25 @@ local function packer_use_single(opts, plugins)
             vim.pack.add(vals, { confirm = false })
         end
 
-        if opts.keys then
-            for _, key in ipairs(opts.keys) do
-                vim.keymap.set('n', key[1], key[2], {
-                    desc = key.desc,
-                    silent = true
-                })
-            end
+        if opts.config then
+            opts.config()
+        else
+            local require_name = opts.require_name or opts.name or opts[1]:match(".*/([^.]*)")
+            require(require_name).setup(opts.opts)
         end
 
         if opts.init then
             opts.init()
         end
 
-        if opts.config then
-            opts.config()
-        else
-            local require_name = opts.require_name or opts.name or opts[1]:match(".*/([^.]*)")
-            require(require_name).setup(opts.opts)
+        if opts.keys then
+            for _, key in ipairs(opts.keys) do
+                local mode = key[3] or 'n'
+                vim.keymap.set(mode, key[1], key[2], {
+                    desc = key.desc,
+                    silent = true
+                })
+            end
         end
     end
 
@@ -202,20 +203,11 @@ M.setup = function(spec)
     end
 end
 
-vim.api.nvim_create_user_command("PackUpdate", function()
-    vim.pack.update()
-end, { desc = "Update all packages" })
-
-vim.api.nvim_create_user_command("PackList", function()
-    vim.pack.update(nil, { offline = true })
-end, { desc = "List all packages" })
-
-vim.api.nvim_create_user_command("PackInstall", function()
-    M.install_all()
-end, { desc = "Install all packages" })
-
-vim.api.nvim_create_user_command("PackClear", function()
-    M.clear()
-end, { desc = "Remove unused packages" })
+require("misc.subcommand").create_command_with_subcommands({
+    update = function() vim.pack.update() end,
+    list = function() vim.pack.update(nil, { offline = true }) end,
+    install = function() M.install_all() end,
+    clear = function() M.clear() end,
+})
 
 return M
