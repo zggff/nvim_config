@@ -1,14 +1,10 @@
 return {
     {
-        -- extract, as putting it as dependency causes errors
-        'nvim-lua/plenary.nvim',
-    },
-    {
-        "zggff/neopyter",
-        version = "fix_parser",
+        "SUSTech-data/neopyter",
         cmd = "Neopyter",
         dependencies = {
             'AbaoFromCUG/websocket.nvim', -- for mode='direct'
+            'nvim-lua/plenary.nvim',
         },
 
         ---@module "neopyter"
@@ -17,9 +13,13 @@ return {
             mode = "direct",
             remote_address = "127.0.0.1:9001",
             file_pattern = { "*.ju.*" },
+            parser = {
+                trim_whitespace = true
+            }
         },
         keys = {
             { "<Cr>",       "<cmd>Neopyter run current<cr>",  desc = "run current" },
+            { "<leader>nn", "<cmd>Neopyter run current<cr>",  desc = "run all" },
             { "<leader>nm", "<cmd>Neopyter run all<cr>",      desc = "run all" },
             { "<leader>nb", "<cmd>Neopyter run allAbove<cr>", desc = "run above" },
         }
@@ -85,7 +85,7 @@ return {
                     })
                 },
                 highlight = {
-                    italic = true
+                    italic = false
                 },
             }
 

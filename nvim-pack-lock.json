@@ -17,7 +17,7 @@
       "src": "https://github.com/nvim-flutter/flutter-tools.nvim"
     },
     "fzf-lua": {
-      "rev": "6048a5b243c9ee0e72cdc09edb44f996c892e005",
+      "rev": "69b0d5d045cc039e68ba4c82190ce471464226b6",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "ghostty_repl": {
@@ -45,9 +45,12 @@
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "neopyter": {
-      "rev": "2ec8cee0fe8acfb97b3b2d20feb9a6f43d145cc1",
-      "src": "https://github.com/zggff/neopyter",
-      "version": "'fix_parser'"
+      "rev": "b3537feb7eaef62f2a0d49219f9e47f8594610ce",
+      "src": "https://github.com/SUSTech-data/neopyter"
+    },
+    "notebook_style.nvim": {
+      "rev": "06e76d45654d77a44a2a6ae45b2b9ddb8e40d312",
+      "src": "https://github.com/stellarjmr/notebook_style.nvim"
     },
     "nvim-dap": {
       "rev": "45a69eba683a2c448dd9ecfc4de89511f0646b5f",
@@ -58,8 +61,12 @@
       "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-lspconfig": {
-      "rev": "d10ce09e42bb0ca8600fd610c3bb58676e61208d",
+      "rev": "4b7fbaa239c5db6b36f424a4521ca9f1a401be33",
       "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "nvim-treesitter": {
+      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-ufo": {
       "rev": "ab3eb124062422d276fae49e0dd63b3ad1062cfc",
@@ -68,6 +75,10 @@
     "oil.nvim": {
       "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
       "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "otter.nvim": {
+      "rev": "a455e68a99d395889ab30a25ac3846a135e93c46",
+      "src": "https://github.com/jmbuhr/otter.nvim"
     },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
@@ -80,6 +91,14 @@
     "pyrepl.nvim": {
       "rev": "a1bbd31254b24abe53ed1f80b82ce42c696d9748",
       "src": "https://github.com/zggff/pyrepl.nvim"
+    },
+    "quarto": {
+      "rev": "d923bb7cfc2bde41143e1c531c28190f0fade3a2",
+      "src": "https://github.com/quarto-dev/quarto-nvim"
+    },
+    "quarto-nvim": {
+      "rev": "d923bb7cfc2bde41143e1c531c28190f0fade3a2",
+      "src": "https://github.com/quarto-dev/quarto-nvim"
     },
     "render-markdown.nvim": {
       "rev": "0fd43fb4b1f073931c4b481f5f3b7cea3749e190",
