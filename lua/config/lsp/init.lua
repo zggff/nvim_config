@@ -84,6 +84,7 @@ local lsps = {
             }
         }
     },
+    jdtls = {}
 }
 
 
