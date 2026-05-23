@@ -5,7 +5,7 @@
       "src": "https://github.com/f-person/auto-dark-mode.nvim"
     },
     "catppuccin": {
-      "rev": "426dbebe06b5c69fd846ceb17b42e12f890aedf1",
+      "rev": "8edd468af4d63212b84d69b2ddb5ffc9023ef5eb",
       "src": "https://github.com/catppuccin/nvim"
     },
     "filepaths_ls.nvim": {
@@ -13,11 +13,15 @@
       "src": "https://github.com/antonk52/filepaths_ls.nvim"
     },
     "flutter-tools.nvim": {
-      "rev": "677cc07c16e8b89999108d2ebeefcfc5f539b73c",
+      "rev": "7d1acfd139215e02d2784733af69a61aaebe06e8",
       "src": "https://github.com/nvim-flutter/flutter-tools.nvim"
     },
+    "fyler.nvim": {
+      "rev": "e87911e6c21d099225063f5aa672e00f6dbb5976",
+      "src": "https://github.com/A7Lavinraj/fyler.nvim"
+    },
     "fzf-lua": {
-      "rev": "69b0d5d045cc039e68ba4c82190ce471464226b6",
+      "rev": "71b45a044c4ef6ecb1910880ef642d5a0e1c02e9",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "ghostty_repl": {
@@ -25,7 +29,7 @@
       "src": "https://github.com/stellarjmr/ghostty-repl.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "8d82c240f190fc33723d48c308ccc1ed8baad69d",
+      "rev": "dd3f588bacbeb041be6facf1742e42097f62165d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "iron.nvim": {
@@ -37,31 +41,35 @@
       "src": "https://github.com/folke/lazydev.nvim"
     },
     "mini.icons": {
-      "rev": "bac6317300e205335df425296570d84322730067",
+      "rev": "520995f1d75da0e4cc901ee95080b1ff2bc46b94",
       "src": "https://github.com/nvim-mini/mini.icons"
     },
     "neogit": {
-      "rev": "e06745228600a585b88726fc9fba44a373c15a47",
+      "rev": "99326a1310fb2d616b455d2fd16d01bf00682f06",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "neopyter": {
-      "rev": "b3537feb7eaef62f2a0d49219f9e47f8594610ce",
+      "rev": "ede156ea0fbfc7ec0920302f624f7b6c27735cfc",
       "src": "https://github.com/SUSTech-data/neopyter"
     },
     "notebook_style.nvim": {
-      "rev": "06e76d45654d77a44a2a6ae45b2b9ddb8e40d312",
+      "rev": "c7905b62e9776d108e5e67b442768f268ff6535f",
       "src": "https://github.com/stellarjmr/notebook_style.nvim"
     },
+    "nvim-autopairs": {
+      "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
+      "src": "https://github.com/windwp/nvim-autopairs"
+    },
     "nvim-dap": {
-      "rev": "45a69eba683a2c448dd9ecfc4de89511f0646b5f",
+      "rev": "531771530d4f82ad2d21e436e3cc052d68d7aebb",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-view": {
-      "rev": "1dd4ba2307245ca9517a4b9d99f3bf80830e4397",
+      "rev": "2fe10567913fca43f352791ac83d19b9fdeacc95",
       "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-lspconfig": {
-      "rev": "4b7fbaa239c5db6b36f424a4521ca9f1a401be33",
+      "rev": "a4ed4e761c400849e8c9f8bda33e5083f890268c",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
@@ -93,23 +101,31 @@
       "src": "https://github.com/zggff/pyrepl.nvim"
     },
     "quarto": {
-      "rev": "d923bb7cfc2bde41143e1c531c28190f0fade3a2",
+      "rev": "17f1e5d664bc615478230dc0240666329efacf9b",
       "src": "https://github.com/quarto-dev/quarto-nvim"
     },
     "quarto-nvim": {
-      "rev": "d923bb7cfc2bde41143e1c531c28190f0fade3a2",
+      "rev": "17f1e5d664bc615478230dc0240666329efacf9b",
       "src": "https://github.com/quarto-dev/quarto-nvim"
     },
     "render-markdown.nvim": {
-      "rev": "0fd43fb4b1f073931c4b481f5f3b7cea3749e190",
+      "rev": "629eb9533ec989d9d5c6cab8f3ad5372422c24e0",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "rose-pine": {
-      "rev": "9504524e5ed0e326534698f637f9d038ba4cd0ee",
+      "rev": "ff483051a47e27d84bdef47703538df1ed9f4a47",
       "src": "https://github.com/rose-pine/neovim"
     },
+    "run-sql-postgresql-adapter.nvim": {
+      "rev": "edb41e61d40e51412a33a6c53967f58bd33e078b",
+      "src": "https://github.com/ZzurabSiprashvili/run-sql-postgresql-adapter.nvim"
+    },
+    "run-sql.nvim": {
+      "rev": "873621337acd1a778b3bf1f7a35976f090333874",
+      "src": "https://github.com/ZzurabSiprashvili/run-sql.nvim"
+    },
     "snacks.nvim": {
-      "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
+      "rev": "0770753c88228f7f15449c6a5b242e3f7cd0d71c",
       "src": "https://github.com/folke/snacks.nvim"
     },
     "tokyonight.nvim": {
@@ -117,12 +133,16 @@
       "src": "https://github.com/folke/tokyonight.nvim"
     },
     "tree-sitter-manager.nvim": {
-      "rev": "fa63bc63ae08b661843d9976a43becfbd3daf76c",
+      "rev": "7d0e588297acd2b906c77a9da9ecf716d5de7746",
       "src": "https://github.com/romus204/tree-sitter-manager.nvim"
     },
     "websocket.nvim": {
-      "rev": "8a096d51c957557f939e296c4937f27d5dc596d5",
+      "rev": "5bf3935923ef1c81cbf75451138918fd4832c428",
       "src": "https://github.com/AbaoFromCUG/websocket.nvim"
+    },
+    "which-key.nvim": {
+      "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
+      "src": "https://github.com/folke/which-key.nvim"
     }
   }
 }

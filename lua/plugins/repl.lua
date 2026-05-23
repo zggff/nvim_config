@@ -1,7 +1,6 @@
 return {
     {
         "SUSTech-data/neopyter",
-        cmd = "Neopyter",
         dependencies = {
             'AbaoFromCUG/websocket.nvim', -- for mode='direct'
             'nvim-lua/plenary.nvim',

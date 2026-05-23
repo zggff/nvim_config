@@ -79,11 +79,11 @@ local lsps = {
         settings = {
             languages = {
                 python = {
-                    { formatCommand = "yapf", formatStdin = true }
+                    { formatCommand = "ruff format --stdin-filename ${INPUT} -", formatStdin = true, formatCanRange = false }
                 }
             }
         }
-    }
+    },
 }
 
 

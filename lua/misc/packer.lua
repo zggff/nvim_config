@@ -203,7 +203,7 @@ M.setup = function(spec)
     end
 end
 
-require("misc.subcommand").create_command_with_subcommands({
+require("misc.subcommand").create_command_with_subcommands("Pack", {
     update = function() vim.pack.update() end,
     list = function() vim.pack.update(nil, { offline = true }) end,
     install = function() M.install_all() end,

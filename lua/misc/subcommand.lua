@@ -1,8 +1,9 @@
 local M = {}
 
+---@param cmd_name string
 ---@param subcommands table<string, function>
-function M.create_command_with_subcommands(subcommands)
-    vim.api.nvim_create_user_command("Pack", function(opts)
+function M.create_command_with_subcommands(cmd_name, subcommands)
+    vim.api.nvim_create_user_command(cmd_name, function(opts)
         local name = opts.fargs[1]
         local cmd = subcommands[name]
         if not cmd then
