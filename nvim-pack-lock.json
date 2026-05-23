@@ -52,10 +52,6 @@
       "rev": "ede156ea0fbfc7ec0920302f624f7b6c27735cfc",
       "src": "https://github.com/SUSTech-data/neopyter"
     },
-    "notebook_style.nvim": {
-      "rev": "c7905b62e9776d108e5e67b442768f268ff6535f",
-      "src": "https://github.com/stellarjmr/notebook_style.nvim"
-    },
     "nvim-autopairs": {
       "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
       "src": "https://github.com/windwp/nvim-autopairs"
@@ -72,21 +68,9 @@
       "rev": "a4ed4e761c400849e8c9f8bda33e5083f890268c",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
-    "nvim-treesitter": {
-      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
-    },
     "nvim-ufo": {
       "rev": "ab3eb124062422d276fae49e0dd63b3ad1062cfc",
       "src": "https://github.com/kevinhwang91/nvim-ufo"
-    },
-    "oil.nvim": {
-      "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
-      "src": "https://github.com/stevearc/oil.nvim"
-    },
-    "otter.nvim": {
-      "rev": "a455e68a99d395889ab30a25ac3846a135e93c46",
-      "src": "https://github.com/jmbuhr/otter.nvim"
     },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
@@ -100,14 +84,6 @@
       "rev": "a1bbd31254b24abe53ed1f80b82ce42c696d9748",
       "src": "https://github.com/zggff/pyrepl.nvim"
     },
-    "quarto": {
-      "rev": "17f1e5d664bc615478230dc0240666329efacf9b",
-      "src": "https://github.com/quarto-dev/quarto-nvim"
-    },
-    "quarto-nvim": {
-      "rev": "17f1e5d664bc615478230dc0240666329efacf9b",
-      "src": "https://github.com/quarto-dev/quarto-nvim"
-    },
     "render-markdown.nvim": {
       "rev": "629eb9533ec989d9d5c6cab8f3ad5372422c24e0",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
@@ -115,14 +91,6 @@
     "rose-pine": {
       "rev": "ff483051a47e27d84bdef47703538df1ed9f4a47",
       "src": "https://github.com/rose-pine/neovim"
-    },
-    "run-sql-postgresql-adapter.nvim": {
-      "rev": "edb41e61d40e51412a33a6c53967f58bd33e078b",
-      "src": "https://github.com/ZzurabSiprashvili/run-sql-postgresql-adapter.nvim"
-    },
-    "run-sql.nvim": {
-      "rev": "873621337acd1a778b3bf1f7a35976f090333874",
-      "src": "https://github.com/ZzurabSiprashvili/run-sql.nvim"
     },
     "snacks.nvim": {
       "rev": "0770753c88228f7f15449c6a5b242e3f7cd0d71c",
