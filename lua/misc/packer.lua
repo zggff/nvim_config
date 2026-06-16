@@ -12,6 +12,9 @@ local function normalize(name)
 end
 
 local function packer_use_single(opts, plugins)
+    if opts.disabled then
+        return
+    end
     local vals = {}
     if opts[1] then
         table.insert(vals, {
@@ -83,13 +86,15 @@ local function packer_use_single(opts, plugins)
             end
         })
     elseif opts.cmd ~= nil then
+        local name = opts.name
+        if not name and opts[1] then name = normalize(opts[1]) else name = "" end
         vim.api.nvim_create_user_command(opts.cmd, function()
             vim.api.nvim_del_user_command(opts.cmd)
             config_func()
 
             ---@diagnostic disable-next-line: param-type-mismatch
             pcall(vim.cmd, opts.cmd)
-        end, { desc = "Initialize " .. vals[1].name })
+        end, { desc = "Initialize " .. name })
     else
         if opts.lazy then
             config_func = vim.schedule_wrap(config_func)
