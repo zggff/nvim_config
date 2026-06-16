@@ -29,15 +29,16 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "jupynvim": {
-      "rev": "2014c3e254f2bd461522d85fcc9b19df1fda6aaf",
-      "src": "https://github.com/sheng-tse/jupynvim"
+      "rev": "255d341c3ac574da02d8e4a7cc9525e894d8c877",
+      "src": "https://github.com/zggff/jupynvim",
+      "version": "'fix_commands'"
     },
     "lazydev.nvim": {
       "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
       "src": "https://github.com/folke/lazydev.nvim"
     },
     "mini.icons": {
-      "rev": "d48ad47359218d2b019034f95f601b3861180885",
+      "rev": "ac38c983aed0a2bd32a65ca3e2348e12e58ca292",
       "src": "https://github.com/nvim-mini/mini.icons"
     },
     "neogit": {

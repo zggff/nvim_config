@@ -1,3 +1,19 @@
+---@class PluginSpec
+---@field [1]? string name + github path
+---@field disabled? boolean
+---@field lazy? boolean
+---@field name? string
+---@field opts? table
+---@field version? string
+---@field config? function
+---@field init? function
+---@field keys? table
+---@field ft? string | string[]
+---@field file_name? string | string[] 
+---@field cmd? string 
+---@field require_name? string 
+---@field dependencies? (PluginSpec|string)[]
+
 local L = {
     all_plugins = {},
     all_plugins_listed = {},
@@ -11,6 +27,8 @@ local function normalize(name)
     return name:match(".*/(.+)")
 end
 
+---@param opts PluginSpec 
+---@param plugins table
 local function packer_use_single(opts, plugins)
     if opts.disabled then
         return
@@ -52,7 +70,7 @@ local function packer_use_single(opts, plugins)
     end
 
     local config_func = function()
-        if opts.lazy or opts.ft or opts.cmd then
+        if opts.lazy or opts.ft or opts.cmd or opts.file_name then
             vim.pack.add(vals, { confirm = false })
         end
 
@@ -78,7 +96,14 @@ local function packer_use_single(opts, plugins)
         end
     end
 
-    if opts.ft ~= nil then
+    if opts.file_name ~= nil then
+        vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+            pattern = opts.file_name,
+            callback = function()
+                config_func()
+            end
+        })
+    elseif opts.ft ~= nil then
         vim.api.nvim_create_autocmd('FileType', {
             pattern = opts.ft,
             callback = function()
@@ -141,16 +166,6 @@ M.clear = function()
     end
     vim.pack.del(to_clear)
 end
-
----@class PluginSpec
----@field [1] string plugin name
----@field opts? table
----@field ft? string
----@field cmd? string
----@field config? function
----@field dependencies? string[]
----@field keys? table[]
-
 
 ---require all files from directory and concat into a table
 ---@param path string

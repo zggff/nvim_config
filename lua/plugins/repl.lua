@@ -1,3 +1,4 @@
+---@type PluginSpec[]
 return {
     {
         "SUSTech-data/neopyter",
@@ -98,24 +99,29 @@ return {
         end
     },
     {
-        "sheng-tse/jupynvim",
-        config = function()
-            local jupy = require("jupynvim")
-            jupy.setup({
-                log_level = "info",
-                image_renderer = "placeholder",
-                core_path = "/Users/maxgiga/dev/opt/jupynvim/core/target/release/jupynvim-core",
-                keymaps = {
-                    run_advance = "<leader>nn",
-                },
-                disable_default_keymaps = true,
-                explorer_keys = {},
-                terminal_keys = {},
-                pick_keys = {
-                    files = {},
-                    grep  = {},
-                },
-            })
+        "zggff/jupynvim",
+        version = "fix_commands",
+        file_name = { "*.ipynb" },
+        opts = {
+            log_level = "info",
+            image_renderer = "placeholder",
+            core_path = "/Users/maxgiga/dev/opt/jupynvim/core/target/release/jupynvim-core",
+            keymaps = {
+                run_advance = "<leader>nn",
+            },
+            disable_default_keymaps = true,
+            explorer_keys = {},
+            terminal_keys = {},
+            pick_keys = {
+                files = {},
+                grep  = {},
+            },
+        },
+        init = function()
+            vim.api.nvim_exec_autocmds("BufReadCmd", { buffer = 0 })
         end,
+        keys = {
+            { "<S-cr>", "<cmd>JupynvimRunCell<cr>", desc = "run current" },
+        }
     }
 }
