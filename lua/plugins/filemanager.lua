@@ -32,12 +32,18 @@ return {
     -- }
     {
         "A7Lavinraj/fyler.nvim",
-        ---@module 'fyler.config'
-        ---@type FylerSetup
+        ---@module 'fyler'
+        ---@type fyler.UserConfig
         opts = {
+            integrations = {
+                icon = 'mini_icons'
+            },
             views = {
                 ---@diagnostic disable-next-line: missing-fields
                 finder = {
+                    -- watcher = {
+                    --     enabled = false,
+                    -- },
                     default_explorer = true,
                 }
             }
