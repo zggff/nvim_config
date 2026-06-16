@@ -11,8 +11,10 @@ return {
     --     end,
     -- },
     {
+        name = "SqlRunner",
+        cmd = "Sql",
         config = function()
-            local sql = require("misc.sql")
+            require("misc.sql")
             vim.keymap.set({'v'}, '<CR>', "<cmd>Sql run<cr>")
         end
     }

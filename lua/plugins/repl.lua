@@ -1,6 +1,7 @@
 return {
     {
         "SUSTech-data/neopyter",
+        disabled = true,
         dependencies = {
             'AbaoFromCUG/websocket.nvim', -- for mode='direct'
             'nvim-lua/plenary.nvim',
@@ -26,6 +27,7 @@ return {
     },
     {
         "zggff/pyrepl.nvim",
+        disabled = true,
         cmd = "Pyrepl",
         opts = {
             cell_pattern = function()
@@ -55,6 +57,7 @@ return {
         "stellarjmr/ghostty-repl.nvim",
         cmd = "GhosttyRepl",
         name = "ghostty_repl",
+        disabled = true,
         opts = {
             python_path = "python",
             keymaps = nil,
@@ -63,6 +66,7 @@ return {
     {
         "Vigemus/iron.nvim",
         cmd = "Iron",
+        disabled = true,
         config = function()
             local iron = require("iron.core")
             local view = require("iron.view")
@@ -92,5 +96,26 @@ return {
                 iron.send_code_block()
             end)
         end
+    },
+    {
+        "sheng-tse/jupynvim",
+        config = function()
+            local jupy = require("jupynvim")
+            jupy.setup({
+                log_level = "info",
+                image_renderer = "placeholder",
+                core_path = "/Users/maxgiga/dev/opt/jupynvim/core/target/release/jupynvim-core",
+                keymaps = {
+                    run_advance = "<leader>nn",
+                },
+                disable_default_keymaps = true,
+                explorer_keys = {},
+                terminal_keys = {},
+                pick_keys = {
+                    files = {},
+                    grep  = {},
+                },
+            })
+        end,
     }
 }

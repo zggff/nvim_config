@@ -24,8 +24,8 @@ return {
     },
     {
         config = function()
-            vim.g.colorscheme_light = "catppuccin"
-            vim.g.colorscheme_dark = "catppuccin"
+            vim.g.colorscheme_light = "catppuccin-latte"
+            vim.g.colorscheme_dark = "catppuccin-macchiato"
             local function set_colorscheme()
                 if vim.o.background == "dark" then
                     vim.cmd.colorscheme(vim.g.colorscheme_dark)
