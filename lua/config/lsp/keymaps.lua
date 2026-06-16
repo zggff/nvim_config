@@ -38,5 +38,14 @@ M.set_keymaps = function()
     vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts)
     vim.keymap.set("n", "<leader>lf", "<cmd>Format<CR>", opts)
     vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+    vim.keymap.set("n", "<leader>li", function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        vim.notify("vim.lsp.inlay_hint is now " .. tostring(vim.lsp.inlay_hint.is_enabled()), vim.log.levels.INFO)
+
+    end, opts)
 end
+
+
+
+
 return M

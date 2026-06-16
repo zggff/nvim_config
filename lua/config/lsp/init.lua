@@ -15,6 +15,7 @@ local function on_jump(diagnostic, bufnr)
 end
 
 vim.diagnostic.config({
+    inlayHints = {},
     virtual_text = {
         severity = {
             min = vim.diagnostic.severity.WARN
@@ -33,14 +34,6 @@ vim.diagnostic.config({
     severity_sort = true,
     jump = { on_jump = on_jump }
 })
-
-local on_attach_default = function(client, bufnr)
-    require("config.lsp.keymaps").set_keymaps()
-    vim.lsp.completion.enable(true, client.id, bufnr, {
-        autotrigger = true,
-    })
-end
-
 
 local lsps = {
     clangd = {},
@@ -69,7 +62,9 @@ local lsps = {
             }
         }
     },
-    pyrefly = {},
+    -- pyrefly = {},
+    -- basedpyright = {},
+    ty = {},
     sqls = {},
     cssls = {},
     html = {},
@@ -84,14 +79,12 @@ local lsps = {
             }
         }
     },
-    jdtls = {}
+    jdtls = {},
+    zls = {}
 }
 
 
 for name, config in pairs(lsps) do
-    if config.on_attach == nil then
-        config.on_attach = on_attach_default
-    end
     vim.lsp.config(name, config)
     vim.lsp.enable(name, true)
 end
@@ -104,4 +97,14 @@ end
 vim.api.nvim_create_user_command("Format", format, {
     nargs = 0,
     desc = "format buffer"
+})
+
+vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+    callback = function(ev)
+        require("config.lsp.keymaps").set_keymaps()
+        vim.lsp.completion.enable(true, ev.data.client_id, ev.buf, {
+            autotrigger = true,
+        })
+    end,
 })
