@@ -35,13 +35,11 @@ return {
         end
     },
     {
-        "zggff/jupynvim",
-        version = "fix_commands",
-        file_name = { "*.ipynb" },
+        "sheng-tse/jupynvim",
+        -- file_name = { "*.ipynb" },
         opts = {
             log_level = "info",
             image_renderer = "placeholder",
-            core_path = "/Users/maxgiga/dev/opt/jupynvim/core/target/release/jupynvim-core",
             keymaps = {
                 run_advance = "<leader>nn",
             },
@@ -53,9 +51,9 @@ return {
                 grep  = {},
             },
         },
-        init = function()
-            vim.api.nvim_exec_autocmds("BufReadCmd", { buffer = 0 })
-        end,
+        -- init = function()
+        --     vim.api.nvim_exec_autocmds("BufReadCmd", { buffer = 0 })
+        -- end,
         keys = {
             { "<S-cr>", "<cmd>JupynvimRunCell<cr>", desc = "run current" },
         }

@@ -17,7 +17,7 @@
       "src": "https://github.com/nvim-flutter/flutter-tools.nvim"
     },
     "fyler.nvim": {
-      "rev": "8364418d1495ce90823dca1db6ac7abba27a7972",
+      "rev": "6aebb86d2eb546ecae33b3e73f02a77b5421aaf3",
       "src": "https://github.com/A7Lavinraj/fyler.nvim"
     },
     "fzf-lua": {
@@ -27,6 +27,10 @@
     "gitsigns.nvim": {
       "rev": "25050e4ed39e628282831d4cbecb1850454ce915",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
+    "jupynvim": {
+      "rev": "9602701ff859530ce2894908dfda0724ee6adad8",
+      "src": "https://github.com/sheng-tse/jupynvim"
     },
     "lazydev.nvim": {
       "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",

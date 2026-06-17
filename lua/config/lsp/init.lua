@@ -63,8 +63,7 @@ local lsps = {
         }
     },
     -- pyrefly = {},
-    -- basedpyright = {},
-    ty = {},
+    basedpyright = {},
     sqls = {},
     cssls = {},
     html = {},
