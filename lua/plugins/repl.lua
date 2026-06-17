@@ -1,70 +1,6 @@
 ---@type PluginSpec[]
 return {
     {
-        "SUSTech-data/neopyter",
-        disabled = true,
-        dependencies = {
-            'AbaoFromCUG/websocket.nvim', -- for mode='direct'
-            'nvim-lua/plenary.nvim',
-        },
-
-        ---@module "neopyter"
-        ---@type neopyter.Option
-        opts = {
-            mode = "direct",
-            remote_address = "127.0.0.1:9001",
-            file_pattern = { "*.ju.*" },
-            parser = {
-                trim_whitespace = true
-            }
-        },
-        keys = {
-            { "<Cr>",       "<cmd>Neopyter run current<cr>",  desc = "run current" },
-            { "<leader>nn", "<cmd>Neopyter run current<cr>",  desc = "run all" },
-            { "<leader>nm", "<cmd>Neopyter run all<cr>",      desc = "run all" },
-            { "<leader>nb", "<cmd>Neopyter run allAbove<cr>", desc = "run above" },
-        }
-
-    },
-    {
-        "zggff/pyrepl.nvim",
-        disabled = true,
-        cmd = "Pyrepl",
-        opts = {
-            cell_pattern = function()
-                if vim.bo.filetype == "markdown" then
-                    return "^```python.*$"
-                end
-                return "^# %%%%$"
-            end,
-            cell_pattern_end = function()
-                if vim.bo.filetype == "markdown" then
-                    return "^```.*$"
-                end
-                return "^# %%%%.*$"
-            end,
-        },
-        keys = {
-            { "<CR>",       "<cmd>Pyrepl sendCell<cr>" },
-            { "<C-CR>",     "<cmd>Pyrepl stepCellForward<cr>" },
-            { "<S-CR>",     "<cmd>Pyrepl stepCellBackward<cr>" },
-            { "<CR>",       "<cmd>Pyrepl sendVisual<cr>",            "v" },
-            { "<leader>nm", "<cmd>Pyrepl sendCellsAll<cr>" },
-            { "<leader>nb", "<cmd>Pyrepl sendCellsBeforeCurrent<cr>" },
-        }
-
-    },
-    {
-        "stellarjmr/ghostty-repl.nvim",
-        cmd = "GhosttyRepl",
-        name = "ghostty_repl",
-        disabled = true,
-        opts = {
-            python_path = "python",
-            keymaps = nil,
-        },
-    },
-    {
         "Vigemus/iron.nvim",
         cmd = "Iron",
         disabled = true,
@@ -123,5 +59,23 @@ return {
         keys = {
             { "<S-cr>", "<cmd>JupynvimRunCell<cr>", desc = "run current" },
         }
-    }
+    },
+    {
+        "milanglacier/yarepl.nvim",
+        name = "yarepl",
+        opts = {
+            metas = {
+                aichat = false,
+                radian = false,
+            },
+        },
+        cmd = "Yarepl",
+        init = function()
+            vim.cmd [[Yarepl start]]
+        end,
+        keys = {
+            { "<cr>", "<cmd>Yarepl send_visual<cr>", "v", desc = "run visual" },
+        }
+    },
+
 }

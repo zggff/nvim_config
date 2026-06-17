@@ -28,11 +28,6 @@
       "rev": "25050e4ed39e628282831d4cbecb1850454ce915",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
-    "jupynvim": {
-      "rev": "255d341c3ac574da02d8e4a7cc9525e894d8c877",
-      "src": "https://github.com/zggff/jupynvim",
-      "version": "'fix_commands'"
-    },
     "lazydev.nvim": {
       "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
       "src": "https://github.com/folke/lazydev.nvim"
@@ -96,6 +91,10 @@
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"
+    },
+    "yarepl": {
+      "rev": "f6f07e7e593091364d8bef8a0d2eba68fadbe5b4",
+      "src": "https://github.com/milanglacier/yarepl.nvim"
     }
   }
 }
