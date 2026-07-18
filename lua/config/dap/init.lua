@@ -7,6 +7,7 @@ local M = {
     hover = nil
 }
 
+
 vim.keymap.set('n', "<leader>kk", require('dap-view').toggle, { desc = "open view" })
 vim.keymap.set('n', '<F1>', dap.continue)
 vim.keymap.set('n', '<F2>', dap.toggle_breakpoint)

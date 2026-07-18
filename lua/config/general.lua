@@ -36,3 +36,9 @@ vim.keymap.set('n', "<leader>q", "<cmd>q<CR>", opts)
 
 vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
+
+vim.filetype.add({
+  extension = {
+    metal = 'metal',
+  },
+})

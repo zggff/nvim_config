@@ -35,10 +35,15 @@ vim.diagnostic.config({
     jump = { on_jump = on_jump }
 })
 
+local util = require("lspconfig.util")
+
 local lsps = {
     clangd = {},
     sourcekit = {
-        filetypes = { "swift" }
+        filetypes = { "swift" },
+        root_dir = function(fname)
+            return util.root_pattern("Package.swift", ".git")(fname)
+        end,
     },
     lua_ls = {},
     gopls = {
@@ -52,7 +57,7 @@ local lsps = {
             },
         },
     },
-    filepaths_ls = {},
+    -- filepaths_ls = {},
     rust_analyzer = {
         settings = {
             ['rust-analyzer'] = {
@@ -68,6 +73,11 @@ local lsps = {
     cssls = {},
     html = {},
     tombi = {},
+    -- metal_lsp = {
+    --     cmd = { "metal-lsp" },
+    --     filetypes = { 'metal' },
+    --     settings = {},
+    -- },
     efm = {
         init_options = { documentFormatting = true },
         settings = {
@@ -79,21 +89,46 @@ local lsps = {
         }
     },
     jdtls = {},
-    zls = {}
+    zls = {},
+    dart = {},
+    tsserver = {
+        filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+        cmd = { "typescript-language-server", "--stdio" }
+    },
+    bashls = {},
+    -- basics_ls = {},
 }
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 for name, config in pairs(lsps) do
+    config.capabilities = capabilities
     vim.lsp.config(name, config)
     vim.lsp.enable(name, true)
 end
 
-
-local function format()
-    vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+-- weird workaround to allow neovim to use luasnip for snippets
+---@diagnostic disable-next-line: duplicate-set-field
+vim.snippet.expand = function(trigger)
+    require('luasnip').lsp_expand(trigger)
 end
 
-vim.api.nvim_create_user_command("Format", format, {
+---@diagnostic disable-next-line: duplicate-set-field
+vim.snippet.active = function(filter)
+    if filter and filter.direction then
+        return require('luasnip').jumpable(filter.direction)
+    end
+    return require('luasnip').in_snippet()
+end
+
+---@diagnostic disable-next-line: duplicate-set-field
+vim.snippet.jump = function(direction)
+    require('luasnip').jump(direction)
+end
+
+
+vim.api.nvim_create_user_command("Format", function() vim.lsp.buf.format() end, {
     nargs = 0,
     desc = "format buffer"
 })
@@ -101,6 +136,7 @@ vim.api.nvim_create_user_command("Format", format, {
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
     callback = function(ev)
+        require("luasnip.loaders.from_vscode").lazy_load()
         require("config.lsp.keymaps").set_keymaps()
         vim.lsp.completion.enable(true, ev.data.client_id, ev.buf, {
             autotrigger = true,

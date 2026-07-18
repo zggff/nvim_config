@@ -27,9 +27,7 @@ return {
                 true
             },
         },
-        ---@diagnostic enable: missing-fields
-        ---@diagnostic enable: assign-type-mismatch
-        init = function ()
+        init = function()
             require("fzf-lua").register_ui_select()
         end,
         keys = {
@@ -48,6 +46,11 @@ return {
                 position = 'below',
             },
         }
+    },
+    {
+        "folke/trouble.nvim",
+        opts = {},
+        cmd = "Trouble",
     },
 
 }

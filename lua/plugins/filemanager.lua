@@ -38,6 +38,9 @@ return {
             integrations = {
                 icon = 'mini_icons'
             },
+            ui = {
+                
+            },
             views = {
                 ---@diagnostic disable-next-line: missing-fields
                 finder = {
