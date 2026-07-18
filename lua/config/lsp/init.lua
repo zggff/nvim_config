@@ -35,15 +35,16 @@ vim.diagnostic.config({
     jump = { on_jump = on_jump }
 })
 
-local util = require("lspconfig.util")
-
 local lsps = {
     clangd = {},
     sourcekit = {
         filetypes = { "swift" },
-        root_dir = function(fname)
-            return util.root_pattern("Package.swift", ".git")(fname)
-        end,
+        root_dir = function(bufnr, on_dir)
+            local root = vim.fs.root(bufnr, { ".git" })
+            if root then
+                on_dir(root)
+            end
+        end
     },
     lua_ls = {},
     gopls = {
